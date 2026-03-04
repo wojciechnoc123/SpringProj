@@ -64,7 +64,9 @@ public class Result {
     }
 
     public String showResult() {
-        return this.position + " "  + driver.getFirstName() + " " + driver.getLastName() + " time: "
+        return this.position + " "  + driver.getFirstName() + " " + driver.getLastName() + " "
+                + driver.getCurrentTeam().getName()
+                + " time: "
                 + this.time + " fastest lap: " + this.fastestLap;
     }
 

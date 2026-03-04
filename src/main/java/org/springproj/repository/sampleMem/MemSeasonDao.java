@@ -1,11 +1,14 @@
 package org.springproj.repository.sampleMem;
 
+import org.springframework.stereotype.Component;
 import org.springproj.model.Season;
 import org.springproj.repository.SeasonDAO;
 import org.springproj.model.Race;
 
 import java.util.List;
 
+
+@Component
 public class MemSeasonDao implements SeasonDAO {
 
     public Season findByYear(String year) {
