@@ -35,9 +35,9 @@ public class SampleData {
         Driver verstapen = new Driver("Max", "Verstappen", 3, 28);
         Driver leclerc = new Driver("Charles", "Leclerc", 27, 16);
         Driver hadjar = new Driver("Isack", "Hadjar", 6, 20);
-        Driver hamilton = new Driver("Gabriel", "Bortoleto", 20, 5);
+        Driver bortoleto = new Driver("Gabriel", "Bortoleto", 20, 5);
         Driver hulkenberg = new Driver("Nico", "Hulkenberg",38,27);
-        Driver bortoleto = new Driver("Lewis", "Hamilton", 41, 44);
+        Driver hamilton = new Driver("Lewis", "Hamilton", 41, 44);
         Driver noriss = new Driver("Lando", "Noriss", 25, 1);
         Driver piastri = new Driver("Oscar", "Piastri", 24, 81);
         Driver russell = new Driver("George", "Russell", 27, 63);

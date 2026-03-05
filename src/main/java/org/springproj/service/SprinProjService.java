@@ -14,6 +14,7 @@ import org.springproj.service.impl.SeasonServiceBean;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class SprinProjService {
     public static void main(String[] args) {
+        /*
         SeasonDAO seasons = new MemSeasonDao();
         DriverDAO drivers = new MemDriverDao();
         TeamDAO teams = new MemTeamDao();
@@ -25,6 +26,6 @@ public class SprinProjService {
         System.out.println();
         String foo = context.getBean(String.class);
         System.out.println(foo);
-
+        */
     }
 }

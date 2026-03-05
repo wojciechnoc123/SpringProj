@@ -9,7 +9,7 @@ public class SpringProjConfig {
 
     @Bean
     String foo() {
-        return new String("bar");
+        return "bar";
     }
 
 }
