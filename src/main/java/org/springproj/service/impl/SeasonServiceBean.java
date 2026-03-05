@@ -48,6 +48,7 @@ public class SeasonServiceBean implements SeasonService {
                 output.append(r.getName());
                 output.append("\n");
                 output.append(r.showResults());
+                output.append("<br>");
             }
         }
         return String.valueOf(output);

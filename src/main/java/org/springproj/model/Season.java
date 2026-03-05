@@ -9,7 +9,7 @@ public class Season {
 
     private String year;
 
-    @JsonIgnore
+//    @JsonIgnore
     private List<Race> races;
 
     public Season(String year, List<Race> races) {

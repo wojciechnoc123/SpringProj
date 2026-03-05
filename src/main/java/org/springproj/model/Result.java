@@ -1,11 +1,15 @@
 package org.springproj.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Result {
 
     private int position;
     private Driver driver;
     private double time;    //in seconds
     private double fastestLap;
+
+    @JsonIgnore
     private Race race;
 
     public Result(int position, Driver driver, double time, double fastestLap, Race race) {

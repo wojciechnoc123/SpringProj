@@ -1,5 +1,7 @@
 package org.springproj.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -11,6 +13,8 @@ public class Race {
     private String country;
     private String date; //DD-MM rok zaciagany z seonu
 
+
+    @JsonIgnore
     private Season season;
 
     private List<Result> results;
