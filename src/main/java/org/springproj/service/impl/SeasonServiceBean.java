@@ -1,6 +1,7 @@
 package org.springproj.service.impl;
 
 import org.springframework.stereotype.Component;
+import org.springproj.model.Driver;
 import org.springproj.model.Season;
 import org.springproj.model.Team;
 import org.springproj.repository.DriverDAO;
@@ -34,6 +35,31 @@ public class SeasonServiceBean implements SeasonService {
                 System.out.println(r.showResults());
             }
         }
+    }
+
+    @Override
+    public String printAllSeasonsString() {
+        StringBuilder output = new StringBuilder();
+        for (var x : seasonDao.findAll()) {
+            output.append("Season ");
+            output.append(x.getYear());
+            output.append("\n");
+            for (var r : x.getRaces()) {
+                output.append(r.getName());
+                output.append("\n");
+                output.append(r.showResults());
+            }
+        }
+        return String.valueOf(output);
+    }
+
+    @Override
+    public List<Season> getAllSeasons() {
+        return seasonDao.findAll();
+    }
+
+    public List<Driver> getAllDrivers() {
+        return driverDAO.findAll();
     }
 
     public void setSeasonDao(SeasonDAO seasonDao) {

@@ -1,4 +1,6 @@
 package org.springproj.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,6 +8,8 @@ import java.util.List;
 public class Season {
 
     private String year;
+
+    @JsonIgnore
     private List<Race> races;
 
     public Season(String year, List<Race> races) {

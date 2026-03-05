@@ -1,5 +1,7 @@
 package org.springproj.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Driver {
 
     private String firstName;
@@ -7,6 +9,8 @@ public class Driver {
     private int age;
 
     private int number;
+
+    @JsonIgnore
     private Team currentTeam;
 
     public Driver(String fn, String ln, int age, int number, Team team) {
