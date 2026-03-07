@@ -1,15 +1,15 @@
 package org.springproj.repository;
 
 import java.util.List;
-import org.springproj.model.Race;
+import org.springproj.model.GrandPrix;
 import org.springproj.model.Season;
 public interface RaceDAO {
 
-    List<Race> findAll();
+    List<GrandPrix> findAll();
 
-    List<Race> findBySeason(Season season);
+    List<GrandPrix> findBySeason(Season season);
 
-    Race findByName(String name);
-    Race findByCountry(String country);
+    GrandPrix findByName(String name);
+    GrandPrix findByCountry(String country);
 
 }

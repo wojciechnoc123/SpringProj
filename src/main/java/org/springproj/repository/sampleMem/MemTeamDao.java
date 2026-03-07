@@ -10,16 +10,10 @@ import java.util.List;
 @Component
 public class MemTeamDao implements TeamDAO {
 
-    @Override
-    public Team findByDriver(Driver driver) {
-        for (var x : SampleData.sampleTeams) {
-            for (var d : x.getDrivers()) {
-                if (d.equals(driver))
-                    return x;
-            }
+        @Override
+        public Team findByName(String name) {
+            return null;
         }
-        return null;
-    }
 
     @Override
     public List<Team> findAll() {

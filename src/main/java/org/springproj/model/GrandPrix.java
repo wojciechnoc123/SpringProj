@@ -6,33 +6,49 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class Race {
+public class GrandPrix {
 
+    private int id;
     private String name;
-    private String cityLocation;
     private String country;
     private String date; //DD-MM rok zaciagany z seonu
-
+    private Circuit circuit;
 
     @JsonIgnore
     private Season season;
 
     private List<Result> results;
 
-    public Race(String name, String cityLocation, String country, String date, Season season, List<Result> results) {
+    public GrandPrix(int id, String name, Circuit circuit, String country, String date, Season season, List<Result> results) {
+        this.id = id;
         this.name = name;
-        this.cityLocation = cityLocation;
+        this.circuit = circuit;
         this.country = country;
         this.date = date;
         this.season = season;
         this.results = results;
     }
-    public Race(String name, String cityLocation, String country, String date, Season season) {
-        this(name, cityLocation, country, date, season, new ArrayList<>());
+
+    public GrandPrix(int id, String name, Circuit circuit, String country, String date, Season season) {
+        this(id, name, circuit, country, date, season, new ArrayList<>());
     }
 
-    public Race() {
-        this("", "", "", "DD-MM",null,null);
+
+    public int getId() {
+        return this.id;
+    }
+    public void setId(int id) {
+        if (id > 0) {
+            this.id = id;
+        }
+    }
+
+    public Circuit getCircuit() {
+        return this.circuit;
+    }
+
+    public void setCircuit(Circuit circuit) {
+        this.circuit = circuit;
     }
 
     public String getName() {
@@ -79,6 +95,8 @@ public class Race {
 
     public String showResults() {
         StringBuilder finalResult = new StringBuilder();
+        String text = "Position Driver Team Time Fastest-lap";
+        finalResult.append(text);
         for (var x : this.results) {
             finalResult.append(x.showResult());
             finalResult.append("\n");

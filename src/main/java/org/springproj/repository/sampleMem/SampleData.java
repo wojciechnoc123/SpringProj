@@ -13,72 +13,138 @@ public class SampleData {
 
     static List<Season> sampleSeasons = new ArrayList<>();
 
-    static List<Race> sampleRaces = new ArrayList<>();
+    static List<GrandPrix> sampleGrandPrixs = new ArrayList<>();
 
-    static void bind(Team team, Driver driver1, Driver driver2) {
-        team.setGridDrivers(driver1, driver2);
-        team.addDriver(driver1);
-        team.addDriver(driver2);
-        driver1.setCurrentTeam(team);
-        driver2.setCurrentTeam(team);
+    static List<TeamEntry> sampleTeamEntries = new ArrayList<>();
+
+     static List<DriverEntry> sampleDriversEntries = new ArrayList<>();
+
+    static List<Engine> sampleEngines = new ArrayList<>();
+
+    static List<EngineSupplier> sampleEngineSuppliers = new ArrayList<>();
+
+    static void bind(TeamEntry team, DriverEntry driver1, DriverEntry driver2) {
+        team.setRaceDrivers(driver1, driver2);
+        driver1.setTeam(team);
+        driver2.setTeam(team);
     }
 
     static {
-        Team mclaren = new Team("Mclaren", "Woking", "United Kingdom");
-        Team ferrari = new Team("Ferrari", "Maranello", "Italy");
-        Team mercedes = new Team("Mercedes", "Brackley", "United Kingdom");
-        Team redbull = new Team ("Red Bull", "Milton Keynes", "United Kingdom");
-        Team audi = new Team("Audi", "Hinvil", "Switzerland");
+        //dostawcy silnikow
+        EngineSupplier audiEngineSupplier = new EngineSupplier(1, "Audi", "Neuburg", "Germany");
+        EngineSupplier mercedesEngineSupplier = new EngineSupplier(2, "Mercedes HPP", "Brixworth", "Germany");
+        EngineSupplier ferrariEngineSupplier = new EngineSupplier(3, "Ferrari", "Maranello", "Italy");
+        EngineSupplier redBullEngineSupplier = new EngineSupplier(4, "Red Bull Ford Powertrains", "Milton Keynes", "United Kingdom");
 
+        sampleEngineSuppliers.add(audiEngineSupplier); sampleEngineSuppliers.add(mercedesEngineSupplier);
+        sampleEngineSuppliers.add(ferrariEngineSupplier); sampleEngineSuppliers.add(redBullEngineSupplier);
+
+        //silnik na 2026
+        Engine audiEngine26 = new Engine(1,"Audi26",  audiEngineSupplier);
+        Engine mercedesEngine26 = new Engine(2, "Mercedes26", mercedesEngineSupplier);
+        Engine ferrariEngine26 = new Engine(3, "Ferrari26", ferrariEngineSupplier);
+        Engine rbptEngine26 = new Engine(4, "RBPT26", redBullEngineSupplier);
+
+        sampleEngines.add(audiEngine26); sampleEngines.add(mercedesEngine26);
+        sampleEngines.add(ferrariEngine26); sampleEngines.add(rbptEngine26);
+
+        //zespoly
+        Team mclaren = new Team(1,"Mclaren", "Woking", "United Kingdom");
+        Team ferrari = new Team(2,"Scuderia Ferrari", "Maranello", "Italy");
+        Team mercedes = new Team(3,"Mercedes", "Brackley", "Germany");
+        Team redbull = new Team (4,"Red Bull", "Milton Keynes", "United Kingdom");
+        Team audi = new Team(5,"Audi", "Hinvil", "Switzerland");
+
+        //zespoly na 2026
+        TeamEntry mclaren26 = new TeamEntry(1, mclaren, mercedesEngine26, "MCL40");
+        TeamEntry ferrari26 = new TeamEntry(2, ferrari, ferrariEngine26, "SF-26");
+        TeamEntry mercedes26 = new TeamEntry(3, mercedes, mercedesEngine26, "W17");
+        TeamEntry redbull26 = new TeamEntry(4, redbull, rbptEngine26, "RB22");
+        TeamEntry audi26 = new TeamEntry(5, audi, audiEngine26, "R26");
+
+        //uzupelnienie "pseudo bazy zespolow"
         sampleTeams.add(mclaren); sampleTeams.add(ferrari); sampleTeams.add(mercedes); sampleTeams.add(redbull); sampleTeams.add(audi);
+        sampleTeamEntries.add(mclaren26); sampleTeamEntries.add(ferrari26); sampleTeamEntries.add(mercedes26);
+        sampleTeamEntries.add(redbull26); sampleTeamEntries.add(audi26);
 
-        Driver verstapen = new Driver("Max", "Verstappen", 3, 28);
-        Driver leclerc = new Driver("Charles", "Leclerc", 27, 16);
-        Driver hadjar = new Driver("Isack", "Hadjar", 6, 20);
-        Driver bortoleto = new Driver("Gabriel", "Bortoleto", 20, 5);
-        Driver hulkenberg = new Driver("Nico", "Hulkenberg",38,27);
-        Driver hamilton = new Driver("Lewis", "Hamilton", 41, 44);
-        Driver noriss = new Driver("Lando", "Noriss", 25, 1);
-        Driver piastri = new Driver("Oscar", "Piastri", 24, 81);
-        Driver russell = new Driver("George", "Russell", 27, 63);
-        Driver antonelli = new Driver("Kimi", "Antonelli", 19, 12);
-
-        bind(mclaren, noriss, piastri); bind(ferrari, leclerc, hamilton); bind(redbull, verstapen, hadjar);
-        bind(audi, hulkenberg, bortoleto); bind(mercedes, russell, antonelli);
+        //kierowcy
+        Driver verstapen = new Driver(1,"Max", "Verstappen", 3);
+        Driver leclerc = new Driver(2,"Charles", "Leclerc", 27);
+        Driver hadjar = new Driver(3,"Isack", "Hadjar", 6);
+        Driver bortoleto = new Driver(4,"Gabriel", "Bortoleto", 20);
+        Driver hulkenberg = new Driver(5,"Nico", "Hulkenberg",38);
+        Driver hamilton = new Driver(6,"Lewis", "Hamilton", 41);
+        Driver noriss = new Driver(7,"Lando", "Noriss", 25);
+        Driver piastri = new Driver(8,"Oscar", "Piastri", 24);
+        Driver russell = new Driver(9,"George", "Russell", 27);
+        Driver antonelli = new Driver(10,"Kimi", "Antonelli", 19);
 
         sampleDrivers.add(verstapen); sampleDrivers.add(leclerc); sampleDrivers.add(hadjar);
         sampleDrivers.add(hamilton); sampleDrivers.add(hulkenberg); sampleDrivers.add(bortoleto);
         sampleDrivers.add(noriss); sampleDrivers.add(piastri); sampleDrivers.add(russell); sampleDrivers.add(antonelli);
 
-        Season season25 = new Season("2025", sampleRaces);
+
+        //kierowcy na 2026
+        DriverEntry verstapen26 = new DriverEntry(1, verstapen,3);
+        DriverEntry leclerc26 = new DriverEntry(2, leclerc, 16);
+        DriverEntry hadjar26 = new DriverEntry(3, hadjar, 6);
+        DriverEntry bortoleto26 = new DriverEntry(4, bortoleto, 5);
+        DriverEntry hulkenberg26 = new DriverEntry(5, hulkenberg, 27);
+        DriverEntry hamilton26 = new DriverEntry(6, hamilton, 44);
+        DriverEntry noriss26 = new DriverEntry(7, noriss, 1);
+        DriverEntry piastri26 = new DriverEntry(8, piastri, 81);
+        DriverEntry russell26 = new DriverEntry(9, russell, 63);
+        DriverEntry antonelli26 = new DriverEntry(10, antonelli, 12);
+
+        sampleDriversEntries.add(verstapen26); sampleDriversEntries.add(leclerc26);
+        sampleDriversEntries.add(hadjar26);sampleDriversEntries.add(bortoleto26);
+        sampleDriversEntries.add(hulkenberg26); sampleDriversEntries.add(hamilton26);
+        sampleDriversEntries.add(noriss26); sampleDriversEntries.add(piastri26);
+        sampleDriversEntries.add(russell26); sampleDriversEntries.add(antonelli26);
+
+
+
+        //ustawienie gridu26
+        bind(mclaren26, noriss26, piastri26); bind(ferrari26, leclerc26, hamilton26); bind(redbull26, verstapen26, hadjar26);
+        bind(audi26, hulkenberg26, bortoleto26); bind(mercedes26, russell26, antonelli26);
+
+
+
+        Season season25 = new Season(1,"2025");
+        season25.setGrandPrixList(sampleGrandPrixs);
+        season25.setDriverEntryList(sampleDriversEntries);
+        season25.setTeamEntryList(sampleTeamEntries);
         sampleSeasons.add(season25);
 
-        Race gpBritain2025 = new Race("Silverstone", "Silverstone", "United Kingdom", "06-07", season25);
-        Race gpAustria2025 = new Race("Red Bull Ring", "Spielberg", "Austria", "13-07", season25);
+        Circuit silverstone = new Circuit(1, "Silverstone Circuit", "United Kingdom", "Silverstone");
+        Circuit spielberg = new Circuit(2, "Red Bull Ring", "Austria", "Spielberg");
 
-        sampleRaces.add(gpBritain2025); sampleRaces.add(gpAustria2025);
+        GrandPrix gpBritain2025 = new GrandPrix(1, "Austria GP", spielberg, "Austria", "13-07", season25);
+        GrandPrix gpAustria2025 = new GrandPrix(2, "British Grand Prix", silverstone, "United Kingdom", "06-07", season25);
 
-        gpAustria2025.addResult(new Result(1, verstapen, 5000.0, 73.0, gpAustria2025));
-        gpAustria2025.addResult(new Result(2,russell, 5005.0, 74.0, gpAustria2025));
-        gpAustria2025.addResult(new Result(3, leclerc, 5010.0, 75, gpAustria2025));
-        gpAustria2025.addResult(new Result(4, hamilton, 5011.0, 76, gpAustria2025));
-        gpAustria2025.addResult(new Result(5, noriss, 5012.0, 77, gpAustria2025));
-        gpAustria2025.addResult(new Result(6, piastri, 5013.0, 78, gpAustria2025));
-        gpAustria2025.addResult(new Result(7, hadjar, 5015.0, 75, gpAustria2025));
-        gpAustria2025.addResult(new Result(8, antonelli, 5020.0, 78, gpAustria2025));
-        gpAustria2025.addResult(new Result(9, hulkenberg, 5030.0, 79, gpAustria2025));
-        gpAustria2025.addResult(new Result(10, bortoleto, 5040.0, 80, gpAustria2025));
+        sampleGrandPrixs.add(gpBritain2025); sampleGrandPrixs.add(gpAustria2025);
 
-        gpBritain2025.addResult(new Result(1, verstapen, 5000.0, 73.0, gpBritain2025));
-        gpBritain2025.addResult(new Result(2,russell, 5005.0, 74.0, gpBritain2025));
-        gpBritain2025.addResult(new Result(3, leclerc, 5010.0, 75, gpBritain2025));
-        gpBritain2025.addResult(new Result(4, hamilton, 5011.0, 76, gpBritain2025));
-        gpBritain2025.addResult(new Result(5, noriss, 5012.0, 77, gpBritain2025));
-        gpBritain2025.addResult(new Result(6, piastri, 5013.0, 78, gpBritain2025));
-        gpBritain2025.addResult(new Result(7, hadjar, 5015.0, 75, gpBritain2025));
-        gpBritain2025.addResult(new Result(8, antonelli, 5020.0, 78, gpBritain2025));
-        gpBritain2025.addResult(new Result(9, hulkenberg, 5030.0, 79, gpBritain2025));
-        gpBritain2025.addResult(new Result(10, bortoleto, 5040.0, 80, gpBritain2025));
+        gpAustria2025.addResult(new Result(1, verstapen26, 5000.0, 73.0, gpAustria2025));
+        gpAustria2025.addResult(new Result(2,russell26, 5005.0, 74.0, gpAustria2025));
+        gpAustria2025.addResult(new Result(3, leclerc26, 5010.0, 75, gpAustria2025));
+        gpAustria2025.addResult(new Result(4, hamilton26, 5011.0, 76, gpAustria2025));
+        gpAustria2025.addResult(new Result(5, noriss26, 5012.0, 77, gpAustria2025));
+        gpAustria2025.addResult(new Result(6, piastri26, 5013.0, 78, gpAustria2025));
+        gpAustria2025.addResult(new Result(7, hadjar26, 5015.0, 75, gpAustria2025));
+        gpAustria2025.addResult(new Result(8, antonelli26, 5020.0, 78, gpAustria2025));
+        gpAustria2025.addResult(new Result(9, hulkenberg26, 5030.0, 79, gpAustria2025));
+        gpAustria2025.addResult(new Result(10, bortoleto26, 5040.0, 80, gpAustria2025));
+
+        gpBritain2025.addResult(new Result(1, verstapen26, 5000.0, 73.0, gpBritain2025));
+        gpBritain2025.addResult(new Result(2,russell26, 5005.0, 74.0, gpBritain2025));
+        gpBritain2025.addResult(new Result(3, leclerc26, 5010.0, 75, gpBritain2025));
+        gpBritain2025.addResult(new Result(4, hamilton26, 5011.0, 76, gpBritain2025));
+        gpBritain2025.addResult(new Result(5, noriss26, 5012.0, 77, gpBritain2025));
+        gpBritain2025.addResult(new Result(6, piastri26, 5013.0, 78, gpBritain2025));
+        gpBritain2025.addResult(new Result(7, hadjar26, 5015.0, 75, gpBritain2025));
+        gpBritain2025.addResult(new Result(8, antonelli26, 5020.0, 78, gpBritain2025));
+        gpBritain2025.addResult(new Result(9, hulkenberg26, 5030.0, 79, gpBritain2025));
+        gpBritain2025.addResult(new Result(10, bortoleto26, 5040.0, 80, gpBritain2025));
 
 
 

@@ -8,9 +8,12 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+import org.springproj.config.SpringProjConfig;
 import org.springproj.repository.SeasonDAO;
 import org.springproj.service.SeasonService;
 import org.springproj.service.impl.SeasonServiceBean;
+import org.springproj.repository.sampleMem.SampleData;
+import org.springproj.model.TeamEntry;
 
 import java.util.Arrays;
 
@@ -27,6 +30,7 @@ public class SpringProjComponent implements CommandLineRunner, ApplicationListen
     @PostConstruct
     void init() {
         this.seasonService.printAllSeasons();
+
     }
 
     @Override

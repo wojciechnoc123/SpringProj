@@ -1,7 +1,7 @@
 package org.springproj.service;
 
-import org.springproj.model.Driver;
-import org.springproj.model.Season;
+import org.springproj.model.*;
+
 import java.util.List;
 
 public interface SeasonService {
@@ -13,5 +13,15 @@ public interface SeasonService {
     public List<Season> getAllSeasons();
 
     public List<Driver> getAllDrivers();
+
+    public List<DriverEntry> getAllDriverEntries();
+
+    public List<TeamEntry> getAllTeamEntries();
+
+    public List<Team> getAllTeams();
+
+    public List<Engine> getAllEngines();
+
+    public List<EngineSupplier> getAllEnginesSuppliers();
 
 }

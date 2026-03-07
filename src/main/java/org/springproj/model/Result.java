@@ -4,24 +4,34 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Result {
 
+    private int id;
     private int position;
-    private Driver driver;
+    private DriverEntry driver;
     private double time;    //in seconds
     private double fastestLap;
 
     @JsonIgnore
-    private Race race;
+    private GrandPrix grandPrix;
 
-    public Result(int position, Driver driver, double time, double fastestLap, Race race) {
+    public Result(int position, DriverEntry driver, double time, double fastestLap, GrandPrix grandPrix) {
         this.position = position;
         this.driver = driver;
         this.time = time;
         this.fastestLap = fastestLap;
-        this.race = race;
+        this.grandPrix = grandPrix;
     }
 
     public Result() {
 
+    }
+
+    public int getId() {
+        return this.id;
+    }
+    public void setId(int id) {
+        if (id > 0) {
+            this.id = id;
+        }
     }
 
     public int getPosition() {
@@ -33,11 +43,11 @@ public class Result {
             this.position = position;
     }
 
-    public Driver getDriver() {
+    public DriverEntry getDriver() {
         return this.driver;
     }
 
-    public void setDriver(Driver driver) {
+    public void setDriver(DriverEntry driver) {
         this.driver = driver;
     }
 
@@ -59,19 +69,20 @@ public class Result {
         return this.fastestLap;
     }
 
-    public void setRace(Race race) {
-        this.race = race;
+    public void setGrandPrix(GrandPrix grandPrix) {
+        this.grandPrix = grandPrix;
     }
 
-    public Race getRace() {
-        return this.race;
+    public GrandPrix getGrandPrix() {
+        return this.grandPrix;
     }
 
     public String showResult() {
-        return this.position + " "  + driver.getFirstName() + " " + driver.getLastName() + " "
-                + driver.getCurrentTeam().getName()
-                + " time: "
-                + this.time + " fastest lap: " + this.fastestLap;
+        String result = this.position + ". " + this.driver.getDriver().getFirstName() + " "
+                + this.driver.getDriver().getLastName() + " "
+                + this.driver.getTeam().getTeam().getName()
+                + " " + this.time + " " + this.fastestLap;
+        return result;
     }
 
 }

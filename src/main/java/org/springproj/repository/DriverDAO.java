@@ -9,6 +9,6 @@ public interface DriverDAO {
 
     Driver findByName(String firstName, String lastName);
 
-    Driver[] findByTeam(Team team);
+
 
 }

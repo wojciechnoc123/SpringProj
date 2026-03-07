@@ -1,25 +1,20 @@
 package org.springproj.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Team {
+public class EngineSupplier {
 
     private int id;
     private String name;
     private String cityLocation;
     private String country;
 
-    //dodac spis wszystkich startow zespolow?
+    //dodac spis wszystkich silnikow?
 
-
-    public Team(int id, String name, String cityLocation, String country) {
+    public EngineSupplier(int id, String name, String cityLocation, String country) {
         this.id = id;
         this.name = name;
         this.cityLocation = cityLocation;
         this.country = country;
     }
-
 
     public int getId() {
         return this.id;
@@ -38,12 +33,12 @@ public class Team {
         this.name = name;
     }
 
-    public String getCity() {
+    public String getCityLocation() {
         return this.cityLocation;
     }
 
-    public void setCity(String city) {
-        this.cityLocation = city;
+    public void setCityLocation(String cityLocation) {
+        this.cityLocation = cityLocation;
     }
 
     public String getCountry() {
@@ -53,9 +48,6 @@ public class Team {
     public void setCountry(String country) {
         this.country = country;
     }
-
-
-
 
 
 }

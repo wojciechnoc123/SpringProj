@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TeamDAO {
 
-    Team findByDriver(Driver driver);
+    Team findByName(String name);
 
     List<Team> findAll();
 

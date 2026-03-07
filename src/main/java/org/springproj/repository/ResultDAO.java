@@ -1,6 +1,5 @@
 package org.springproj.repository;
 
-import org.springproj.model.Race;
 import org.springproj.model.Driver;
 import org.springproj.model.Result;
 

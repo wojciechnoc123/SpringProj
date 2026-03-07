@@ -3,7 +3,7 @@ package org.springproj.repository.sampleMem;
 import org.springframework.stereotype.Component;
 import org.springproj.model.Season;
 import org.springproj.repository.SeasonDAO;
-import org.springproj.model.Race;
+import org.springproj.model.GrandPrix;
 
 import java.util.List;
 
@@ -19,10 +19,10 @@ public class MemSeasonDao implements SeasonDAO {
         return null;
     }
 
-    public Season findByRace(Race race) {
+    public Season findByRace(GrandPrix grandPrix) {
         for (var x : SampleData.sampleSeasons) {
-            for (var r : x.getRaces()) {
-                if (r.equals(race))
+            for (var r : x.getGrandPrixes()) {
+                if (r.equals(grandPrix))
                     return x;
             }
         }

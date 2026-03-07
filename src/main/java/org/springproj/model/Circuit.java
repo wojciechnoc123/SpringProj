@@ -1,23 +1,17 @@
 package org.springproj.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Team {
+public class Circuit {
 
     private int id;
     private String name;
-    private String cityLocation;
     private String country;
+    private String location;
 
-    //dodac spis wszystkich startow zespolow?
-
-
-    public Team(int id, String name, String cityLocation, String country) {
+    public Circuit(int id, String name, String country, String location) {
         this.id = id;
         this.name = name;
-        this.cityLocation = cityLocation;
         this.country = country;
+        this.location = location;
     }
 
 
@@ -38,14 +32,6 @@ public class Team {
         this.name = name;
     }
 
-    public String getCity() {
-        return this.cityLocation;
-    }
-
-    public void setCity(String city) {
-        this.cityLocation = city;
-    }
-
     public String getCountry() {
         return this.country;
     }
@@ -54,8 +40,11 @@ public class Team {
         this.country = country;
     }
 
+    public String getLocation() {
+        return this.location;
+    }
 
-
-
-
+    public void setLocation(String location) {
+        this.location = location;
+    }
 }

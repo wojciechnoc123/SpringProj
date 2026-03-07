@@ -4,25 +4,28 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Driver {
 
+    private int id;
     private String firstName;
     private String lastName;
     private int age;
 
-    private int number;
 
-    @JsonIgnore
-    private Team currentTeam;
 
-    public Driver(String fn, String ln, int age, int number, Team team) {
+
+    public Driver(int id, String fn, String ln, int age) {
+        this.id = id;
         this.firstName = fn;
         this.lastName = ln;
         this.age = age;
-        this.number = number;
-        this.currentTeam = team;
     }
 
-    public Driver(String fn, String ln, int age, int number) {
-        this(fn, ln, age, number, null);
+    public int getId() {
+        return this.id;
+    }
+    public void setId(int id) {
+        if (id > 0) {
+            this.id = id;
+        }
     }
 
     public String getFirstName() {
@@ -50,22 +53,8 @@ public class Driver {
         return this.age;
     }
 
-    public void setNumber(int number) {
-        if (number > 0) {
-            this.number = number;
-        }
-    }
 
-    public int getNumber() {
-        return this.number;
-    }
 
-    public Team getCurrentTeam() {
-        return this.currentTeam;
-    }
 
-    public void setCurrentTeam(Team team) {
-        this.currentTeam = team;
-    }
 
 }

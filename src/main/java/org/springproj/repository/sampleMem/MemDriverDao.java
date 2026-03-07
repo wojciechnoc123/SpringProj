@@ -22,11 +22,5 @@ public class MemDriverDao implements DriverDAO {
         return null;
     }
 
-    @Override
-    public Driver[] findByTeam(Team team) {
-        for (var x : SampleData.sampleTeams)
-            if (x.equals(team))
-                return x.getGridDrivers();
-        return null;
-    }
+
 }
