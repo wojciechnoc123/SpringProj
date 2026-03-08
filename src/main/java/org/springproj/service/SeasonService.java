@@ -1,27 +1,17 @@
 package org.springproj.service;
 
-import org.springproj.model.*;
-
+import org.springproj.model.Season;
 import java.util.List;
+import org.springproj.model.GrandPrix;
 
 public interface SeasonService {
 
-    public void printAllSeasons();
+    List<Season> findAll();
 
-    public String printAllSeasonsString();
+    Season findById(int id);
 
-    public List<Season> getAllSeasons();
+    Season findByYear(String year);
 
-    public List<Driver> getAllDrivers();
-
-    public List<DriverEntry> getAllDriverEntries();
-
-    public List<TeamEntry> getAllTeamEntries();
-
-    public List<Team> getAllTeams();
-
-    public List<Engine> getAllEngines();
-
-    public List<EngineSupplier> getAllEnginesSuppliers();
+    Season findByRace(GrandPrix gp);
 
 }

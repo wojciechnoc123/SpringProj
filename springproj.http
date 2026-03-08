@@ -1,0 +1,14 @@
+### get all seasons
+GET http://localhost:8080/webapi/test/seasons
+
+### get season by id
+GET http://localhost:8080/webapi/test/seasons/1
+
+### kierowcy na sezon 2026
+GET http://localhost:8080/webapi/test/driverEntries/2026
+
+### zespoły na 2026
+GET http://localhost:8080/webapi/test/teamEntries/2026
+
+### wszystkie zespoly
+GET http://localhost:8080/webapi/test/teams

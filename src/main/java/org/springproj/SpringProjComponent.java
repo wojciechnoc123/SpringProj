@@ -8,12 +8,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-import org.springproj.config.SpringProjConfig;
-import org.springproj.repository.SeasonDAO;
-import org.springproj.service.SeasonService;
-import org.springproj.service.impl.SeasonServiceBean;
-import org.springproj.repository.sampleMem.SampleData;
-import org.springproj.model.TeamEntry;
+import org.springproj.service.GeneralService;
 
 import java.util.Arrays;
 
@@ -21,16 +16,16 @@ import java.util.Arrays;
 @Slf4j
 public class SpringProjComponent implements CommandLineRunner, ApplicationListener<ContextRefreshedEvent> {
 
-    private final SeasonService seasonService;
+    private final GeneralService generalService;
 
-    public SpringProjComponent(SeasonService seasonService) {
-        this.seasonService = seasonService;
+    public SpringProjComponent(GeneralService generalService) {
+        this.generalService = generalService;
     }
 
     @PostConstruct
     void init() {
-        this.seasonService.printAllSeasons();
-
+    //    this.seasonService.printAllSeasons();
+        System.out.println("Zaczynam pracę.");
     }
 
     @Override
@@ -41,7 +36,7 @@ public class SpringProjComponent implements CommandLineRunner, ApplicationListen
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         log.info("on context refreshed");
-        seasonService.printAllSeasons();
+        System.out.println(generalService.printAllSeasonsString());
     }
 
     @EventListener

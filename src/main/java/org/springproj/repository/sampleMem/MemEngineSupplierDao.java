@@ -2,12 +2,13 @@ package org.springproj.repository.sampleMem;
 
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springproj.model.EngineSupplier;
 import org.springproj.repository.EngineSupplierDao;
 
 import java.util.List;
 
-@Component
+@Repository("engineSupplierDao")
 public class MemEngineSupplierDao implements EngineSupplierDao {
 
     @Override

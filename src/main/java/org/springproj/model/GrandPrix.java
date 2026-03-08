@@ -95,8 +95,7 @@ public class GrandPrix {
 
     public String showResults() {
         StringBuilder finalResult = new StringBuilder();
-        String text = "Position Driver Team Time Fastest-lap";
-        finalResult.append(text);
+        finalResult.append("Position Driver Team Time Fastest-lap\n");
         for (var x : this.results) {
             finalResult.append(x.showResult());
             finalResult.append("\n");

@@ -13,5 +13,5 @@ public interface SeasonDAO {
 
     List<Season> findAll();
 
-
+    Season findById(int id);
 }

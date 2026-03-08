@@ -1,13 +1,14 @@
 package org.springproj.repository.sampleMem;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springproj.repository.DriverDAO;
 import org.springproj.model.Driver;
 import org.springproj.model.Team;
 
 import java.util.List;
 
-@Component
+@Repository("driverDao")
 public class MemDriverDao implements DriverDAO {
 
     @Override

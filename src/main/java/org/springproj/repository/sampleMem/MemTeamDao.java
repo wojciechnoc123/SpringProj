@@ -1,13 +1,14 @@
 package org.springproj.repository.sampleMem;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springproj.model.Driver;
 import org.springproj.model.Team;
 import org.springproj.repository.TeamDAO;
 
 import java.util.List;
 
-@Component
+@Repository("teamDao")
 public class MemTeamDao implements TeamDAO {
 
         @Override

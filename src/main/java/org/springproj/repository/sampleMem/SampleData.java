@@ -110,41 +110,41 @@ public class SampleData {
 
 
 
-        Season season25 = new Season(1,"2025");
-        season25.setGrandPrixList(sampleGrandPrixs);
-        season25.setDriverEntryList(sampleDriversEntries);
-        season25.setTeamEntryList(sampleTeamEntries);
-        sampleSeasons.add(season25);
+        Season season26 = new Season(1,"2026");
+        season26.setGrandPrixList(sampleGrandPrixs);
+        season26.setDriverEntryList(sampleDriversEntries);
+        season26.setTeamEntryList(sampleTeamEntries);
+        sampleSeasons.add(season26);
 
         Circuit silverstone = new Circuit(1, "Silverstone Circuit", "United Kingdom", "Silverstone");
         Circuit spielberg = new Circuit(2, "Red Bull Ring", "Austria", "Spielberg");
 
-        GrandPrix gpBritain2025 = new GrandPrix(1, "Austria GP", spielberg, "Austria", "13-07", season25);
-        GrandPrix gpAustria2025 = new GrandPrix(2, "British Grand Prix", silverstone, "United Kingdom", "06-07", season25);
+        GrandPrix gpBritain26 = new GrandPrix(1, "Austria GP", spielberg, "Austria", "13-07", season26);
+        GrandPrix gpAustria26 = new GrandPrix(2, "British Grand Prix", silverstone, "United Kingdom", "06-07", season26);
 
-        sampleGrandPrixs.add(gpBritain2025); sampleGrandPrixs.add(gpAustria2025);
+        sampleGrandPrixs.add(gpBritain26); sampleGrandPrixs.add(gpAustria26);
 
-        gpAustria2025.addResult(new Result(1, verstapen26, 5000.0, 73.0, gpAustria2025));
-        gpAustria2025.addResult(new Result(2,russell26, 5005.0, 74.0, gpAustria2025));
-        gpAustria2025.addResult(new Result(3, leclerc26, 5010.0, 75, gpAustria2025));
-        gpAustria2025.addResult(new Result(4, hamilton26, 5011.0, 76, gpAustria2025));
-        gpAustria2025.addResult(new Result(5, noriss26, 5012.0, 77, gpAustria2025));
-        gpAustria2025.addResult(new Result(6, piastri26, 5013.0, 78, gpAustria2025));
-        gpAustria2025.addResult(new Result(7, hadjar26, 5015.0, 75, gpAustria2025));
-        gpAustria2025.addResult(new Result(8, antonelli26, 5020.0, 78, gpAustria2025));
-        gpAustria2025.addResult(new Result(9, hulkenberg26, 5030.0, 79, gpAustria2025));
-        gpAustria2025.addResult(new Result(10, bortoleto26, 5040.0, 80, gpAustria2025));
+        gpAustria26.addResult(new Result(1, verstapen26, 5000.0, 73.0, gpAustria26));
+        gpAustria26.addResult(new Result(2,russell26, 5005.0, 74.0, gpAustria26));
+        gpAustria26.addResult(new Result(3, leclerc26, 5010.0, 75, gpAustria26));
+        gpAustria26.addResult(new Result(4, hamilton26, 5011.0, 76, gpAustria26));
+        gpAustria26.addResult(new Result(5, noriss26, 5012.0, 77, gpAustria26));
+        gpAustria26.addResult(new Result(6, piastri26, 5013.0, 78, gpAustria26));
+        gpAustria26.addResult(new Result(7, hadjar26, 5015.0, 75, gpAustria26));
+        gpAustria26.addResult(new Result(8, antonelli26, 5020.0, 78, gpAustria26));
+        gpAustria26.addResult(new Result(9, hulkenberg26, 5030.0, 79, gpAustria26));
+        gpAustria26.addResult(new Result(10, bortoleto26, 5040.0, 80, gpAustria26));
 
-        gpBritain2025.addResult(new Result(1, verstapen26, 5000.0, 73.0, gpBritain2025));
-        gpBritain2025.addResult(new Result(2,russell26, 5005.0, 74.0, gpBritain2025));
-        gpBritain2025.addResult(new Result(3, leclerc26, 5010.0, 75, gpBritain2025));
-        gpBritain2025.addResult(new Result(4, hamilton26, 5011.0, 76, gpBritain2025));
-        gpBritain2025.addResult(new Result(5, noriss26, 5012.0, 77, gpBritain2025));
-        gpBritain2025.addResult(new Result(6, piastri26, 5013.0, 78, gpBritain2025));
-        gpBritain2025.addResult(new Result(7, hadjar26, 5015.0, 75, gpBritain2025));
-        gpBritain2025.addResult(new Result(8, antonelli26, 5020.0, 78, gpBritain2025));
-        gpBritain2025.addResult(new Result(9, hulkenberg26, 5030.0, 79, gpBritain2025));
-        gpBritain2025.addResult(new Result(10, bortoleto26, 5040.0, 80, gpBritain2025));
+        gpBritain26.addResult(new Result(1, verstapen26, 5000.0, 73.0, gpBritain26));
+        gpBritain26.addResult(new Result(2,russell26, 5005.0, 74.0, gpBritain26));
+        gpBritain26.addResult(new Result(3, leclerc26, 5010.0, 75, gpBritain26));
+        gpBritain26.addResult(new Result(4, hamilton26, 5011.0, 76, gpBritain26));
+        gpBritain26.addResult(new Result(5, noriss26, 5012.0, 77, gpBritain26));
+        gpBritain26.addResult(new Result(6, piastri26, 5013.0, 78, gpBritain26));
+        gpBritain26.addResult(new Result(7, hadjar26, 5015.0, 75, gpBritain26));
+        gpBritain26.addResult(new Result(8, antonelli26, 5020.0, 78, gpBritain26));
+        gpBritain26.addResult(new Result(9, hulkenberg26, 5030.0, 79, gpBritain26));
+        gpBritain26.addResult(new Result(10, bortoleto26, 5040.0, 80, gpBritain26));
 
 
 
