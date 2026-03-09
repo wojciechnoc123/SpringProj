@@ -40,6 +40,9 @@ public class DriverServiceBean implements DriverService {
         return this.driverDao.findByCountry(country);
     }
 
-
+    @Override
+    public Driver saveDriver(Driver driver) {
+        return this.driverDao.saveDriver(driver);
+    }
 
 }

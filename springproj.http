@@ -20,6 +20,23 @@ GET http://localhost:8080/webapi/test/teams/6
 GET http://localhost:8080/webapi/test/drivers/2
 
 
+
 ### team entry przez driver entry
-GET http://localhost:8080/webapi/driverEntries/1/teamEntry
+GET http://localhost:8080/webapi/driverEntries/2/teamEntry
 Accept: application/json
+
+
+### wyszukanie wraz z imieniem i nazwiskiem
+GET http://localhost:8080/webapi/driver?firstName=Charles&lastName=Leclerc
+custom-header: costam
+
+### dodanie kierowcy
+POST http://localhost:8080/webapi/drivers
+Content-Type: application/json
+
+{
+  "firstName": "Michael",
+  "lastName": "Schumacher",
+  "age": 60,
+  "country": "Germany"
+}

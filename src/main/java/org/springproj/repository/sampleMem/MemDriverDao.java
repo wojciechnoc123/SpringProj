@@ -6,6 +6,8 @@ import org.springproj.repository.DriverDAO;
 import org.springproj.model.Driver;
 import org.springproj.model.Team;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Repository("driverDao")
@@ -38,5 +40,16 @@ public class MemDriverDao implements DriverDAO {
     public List<Driver> findByCountry(String country) {
         return SampleData.sampleDrivers.stream().filter(x -> x.getCountry().equals(country)).toList();
     }
+
+    @Override
+    public Driver saveDriver(Driver driver) {
+        SampleData.sampleDrivers.sort(Comparator.comparingInt(Driver::getId));
+        int idToAdd = SampleData.sampleDrivers.get(SampleData.sampleDrivers.size() - 1).getId();
+        driver.setId(idToAdd+1);
+        SampleData.sampleDrivers.add(driver);
+        return driver;
+    }
+
+
 
 }

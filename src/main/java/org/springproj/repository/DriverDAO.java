@@ -13,4 +13,6 @@ public interface DriverDAO {
 
     List<Driver> findByCountry(String country);
 
+    Driver saveDriver(Driver driver);
+
 }

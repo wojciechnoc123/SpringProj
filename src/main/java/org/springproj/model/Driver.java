@@ -12,12 +12,20 @@ public class Driver {
 
 
 
-    public Driver(int id, String fn, String ln, int age, String country) {
+    public Driver(int id, String firstName, String lastName, int age, String country) {
         this.id = id;
-        this.firstName = fn;
-        this.lastName = ln;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.age = age;
         this.country = country;
+    }
+
+    public Driver(String firstName, String lastName, int age, String country) {
+        this(0,firstName,lastName,age,country);
+    }
+
+    public Driver() {
+
     }
 
     public int getId() {

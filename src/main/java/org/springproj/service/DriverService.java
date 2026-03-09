@@ -13,4 +13,6 @@ public interface DriverService {
 
     List<Driver> findByCountry(String country);
 
+    Driver saveDriver(Driver driver);
+
 }
