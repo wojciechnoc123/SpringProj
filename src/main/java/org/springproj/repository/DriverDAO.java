@@ -9,6 +9,8 @@ public interface DriverDAO {
 
     Driver findByName(String firstName, String lastName);
 
+    Driver findById(int id);
 
+    List<Driver> findByCountry(String country);
 
 }

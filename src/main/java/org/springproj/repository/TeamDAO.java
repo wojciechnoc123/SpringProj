@@ -12,4 +12,6 @@ public interface TeamDAO {
 
     List<Team> findAll();
 
+    Team findById(int id);
+
 }

@@ -8,15 +8,16 @@ public class Driver {
     private String firstName;
     private String lastName;
     private int age;
+    private String country;
 
 
 
-
-    public Driver(int id, String fn, String ln, int age) {
+    public Driver(int id, String fn, String ln, int age, String country) {
         this.id = id;
         this.firstName = fn;
         this.lastName = ln;
         this.age = age;
+        this.country = country;
     }
 
     public int getId() {
@@ -53,7 +54,13 @@ public class Driver {
         return this.age;
     }
 
+    public String getCountry() {
+        return this.country;
+    }
 
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
 
 

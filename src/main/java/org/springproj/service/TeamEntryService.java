@@ -1,12 +1,9 @@
-package org.springproj.repository;
+package org.springproj.service;
 
 import org.springproj.model.DriverEntry;
 import org.springproj.model.TeamEntry;
-import java.util.List;
 
-public interface TeamEntryDao {
-
-    List<TeamEntry> findAll();
+public interface TeamEntryService {
 
     TeamEntry findById(int id);
 

@@ -15,14 +15,14 @@ public class GeneralServiceBean implements GeneralService {
     private SeasonDAO seasonDao;
     private TeamDAO teamDao;
     private DriverDAO driverDAO;
-    private DriverEntryDao driverEntryDao;
+    private DriverEntryDAO driverEntryDao;
     private TeamEntryDao teamEntryDao;
     private EngineDao engineDao;
     private EngineSupplierDao engineSupplierDao;
 
     //autowired gdyby wiecej konstruktorow
     //@Autowired
-    public GeneralServiceBean(SeasonDAO seasonDao, TeamDAO teamDao, DriverDAO driverDAO, DriverEntryDao driverEntryDao, TeamEntryDao teamEntryDao, EngineDao engineDao, EngineSupplierDao engineSupplierDao) {
+    public GeneralServiceBean(SeasonDAO seasonDao, TeamDAO teamDao, DriverDAO driverDAO, DriverEntryDAO driverEntryDao, TeamEntryDao teamEntryDao, EngineDao engineDao, EngineSupplierDao engineSupplierDao) {
         this.seasonDao = seasonDao;
         this.teamDao = teamDao;
         this.driverDAO = driverDAO;
@@ -126,7 +126,15 @@ public class GeneralServiceBean implements GeneralService {
         return engineSupplierDao.findAll();
     }
 
+    @Override
+    public Team getTeamById(int id) {
+        return this.teamDao.findById(id);
+    }
 
+    @Override
+    public Driver getDriverById(int id) {
+        return this.driverDAO.findById(id);
+    }
 
 
 }

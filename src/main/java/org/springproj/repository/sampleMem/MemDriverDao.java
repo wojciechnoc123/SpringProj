@@ -23,5 +23,20 @@ public class MemDriverDao implements DriverDAO {
         return null;
     }
 
+    @Override
+    public Driver findById(int id) {
+        //    do zadania potrzebuje nulla a tu jest optional co albo zwraca obiekt albo NPE
+        //    return SampleData.sampleDrivers.stream().filter(x -> x.getId() == id).findFirst().get();
+        for (var x : SampleData.sampleDrivers) {
+            if (x.getId() == id)
+                return x;
+        }
+        return null;
+    }
+
+    @Override
+    public List<Driver> findByCountry(String country) {
+        return SampleData.sampleDrivers.stream().filter(x -> x.getCountry().equals(country)).toList();
+    }
 
 }

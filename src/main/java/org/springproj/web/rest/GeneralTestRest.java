@@ -2,6 +2,8 @@ package org.springproj.web.rest;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,17 +46,17 @@ public class GeneralTestRest {
         return this.generalService.getAllTeams();
     }
 
-    @GetMapping("/driverEntries/2026")
+    @GetMapping("/driverEntries")
     List<DriverEntry> getDriverEntries() {
         return this.generalService.getAllDriverEntries();
     }
 
-    @GetMapping("/teamEntries/2026")
+    @GetMapping("/teamEntries")
     List<TeamEntry> getTeamEntries() {
         return this.generalService.getAllTeamEntries();
     }
 
-    @GetMapping("/engines/2026")
+    @GetMapping("/engines")
     List<Engine> getAllEngines() {
         return this.generalService.getAllEngines();
     }
@@ -64,5 +66,36 @@ public class GeneralTestRest {
         return this.generalService.getAllEnginesSuppliers();
     }
 
+    @GetMapping("teams/{id}")
+    ResponseEntity<Team> getTeamById(@PathVariable int id) {
+        log.info("Retrieving team");
+        Team teamToReturn = this.generalService.getTeamById(id);
+
+        if (teamToReturn != null) {
+            return ResponseEntity.status(200).body(teamToReturn);
+        }
+        else {
+            return ResponseEntity.notFound().build();
+        }
+
+    }
+    /*
+    @GetMapping("drivers/{id}")
+    Driver getDrivers(@PathVariable int id) {
+        Driver driverToReturn = this.generalService.getDriverById(id);
+        return driverToReturn;
+    }
+    */
+
+    @GetMapping("drivers/{id}")
+    ResponseEntity<Driver> getDrivers(@PathVariable int id) {
+        Driver driverToReturn = this.generalService.getDriverById(id);
+        if (driverToReturn != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(driverToReturn);
+        }
+        else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }

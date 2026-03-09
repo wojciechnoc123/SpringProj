@@ -68,16 +68,16 @@ public class SampleData {
         sampleTeamEntries.add(redbull26); sampleTeamEntries.add(audi26);
 
         //kierowcy
-        Driver verstapen = new Driver(1,"Max", "Verstappen", 3);
-        Driver leclerc = new Driver(2,"Charles", "Leclerc", 27);
-        Driver hadjar = new Driver(3,"Isack", "Hadjar", 6);
-        Driver bortoleto = new Driver(4,"Gabriel", "Bortoleto", 20);
-        Driver hulkenberg = new Driver(5,"Nico", "Hulkenberg",38);
-        Driver hamilton = new Driver(6,"Lewis", "Hamilton", 41);
-        Driver noriss = new Driver(7,"Lando", "Noriss", 25);
-        Driver piastri = new Driver(8,"Oscar", "Piastri", 24);
-        Driver russell = new Driver(9,"George", "Russell", 27);
-        Driver antonelli = new Driver(10,"Kimi", "Antonelli", 19);
+        Driver verstapen = new Driver(1,"Max", "Verstappen", 3,"Netherlands");
+        Driver leclerc = new Driver(2,"Charles", "Leclerc", 27, "Monaco");
+        Driver hadjar = new Driver(3,"Isack", "Hadjar", 6, "France");
+        Driver bortoleto = new Driver(4,"Gabriel", "Bortoleto", 20, "Brasil");
+        Driver hulkenberg = new Driver(5,"Nico", "Hulkenberg",38, "Germany");
+        Driver hamilton = new Driver(6,"Lewis", "Hamilton", 41, "United Kingdom");
+        Driver noriss = new Driver(7,"Lando", "Noriss", 25, "United Kingdom");
+        Driver piastri = new Driver(8,"Oscar", "Piastri", 24, "Australia");
+        Driver russell = new Driver(9,"George", "Russell", 27, "United Kingdom");
+        Driver antonelli = new Driver(10,"Kimi", "Antonelli", 19, "Italy");
 
         sampleDrivers.add(verstapen); sampleDrivers.add(leclerc); sampleDrivers.add(hadjar);
         sampleDrivers.add(hamilton); sampleDrivers.add(hulkenberg); sampleDrivers.add(bortoleto);

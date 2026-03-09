@@ -26,4 +26,8 @@ public interface GeneralService {
 
     public Season getSeasonById(int id);
 
+    public Team getTeamById(int id);
+
+    public Driver getDriverById(int id);
+
 }

@@ -5,10 +5,21 @@ GET http://localhost:8080/webapi/test/seasons
 GET http://localhost:8080/webapi/test/seasons/1
 
 ### kierowcy na sezon 2026
-GET http://localhost:8080/webapi/test/driverEntries/2026
+GET http://localhost:8080/webapi/test/driverEntries
 
 ### zespoły na 2026
-GET http://localhost:8080/webapi/test/teamEntries/2026
+GET http://localhost:8080/webapi/test/teamEntries
 
 ### wszystkie zespoly
 GET http://localhost:8080/webapi/test/teams
+
+### pojedynczy zespol
+GET http://localhost:8080/webapi/test/teams/6
+
+### pojedynczy kierowca
+GET http://localhost:8080/webapi/test/drivers/2
+
+
+### team entry przez driver entry
+GET http://localhost:8080/webapi/driverEntries/1/teamEntry
+Accept: application/json
