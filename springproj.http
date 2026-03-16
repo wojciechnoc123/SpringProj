@@ -63,13 +63,14 @@ Content-Type: application/json
 }
 
 
-###dodanie zespolu
-POST http://localhost:8080/webapi/teams
+
+
+### adding driverEntry
+POST http://localhost:8080/webapi/driverEntries
 Content-Type: application/json
 
 {
-
-  "cityLocation": "Katowice",
-  "country": "Poland"
-
+  "driverId": 3,
+  "teamEntryId": 2,
+  "number": 21
 }

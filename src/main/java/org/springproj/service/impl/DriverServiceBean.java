@@ -27,7 +27,7 @@ public class DriverServiceBean implements DriverService {
 
     @Override
     public Driver findById(int id) {
-        return this.findById(id);
+        return this.driverDao.findById(id);
     }
 
     @Override

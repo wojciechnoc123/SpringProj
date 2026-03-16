@@ -1,0 +1,10 @@
+
+### adding driverEntry
+POST http://localhost:8080/webapi/driverEntries
+Content-Type: application/json
+
+{
+  "driverId": 3,
+  "teamEntryId": 2,
+  "number": 21
+}

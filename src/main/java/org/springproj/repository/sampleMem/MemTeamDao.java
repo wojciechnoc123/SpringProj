@@ -14,7 +14,10 @@ public class MemTeamDao implements TeamDAO {
 
         @Override
         public Team findByName(String name) {
-            return null;
+            Team team = SampleData.sampleTeams.stream()
+                    .filter((t) -> t.getName().equals(name))
+                    .findFirst().orElse(null);
+            return team;
         }
 
     @Override

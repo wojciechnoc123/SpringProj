@@ -36,6 +36,8 @@ public class TeamRest {
             @RequestParam("name") String name
 
     ) {
+        if (name.equals("costam"))
+            throw new IllegalArgumentException("costam name throws exception");
         Team team = teamService.findByName(name);
         if (team == null)
             return ResponseEntity.notFound().build();
