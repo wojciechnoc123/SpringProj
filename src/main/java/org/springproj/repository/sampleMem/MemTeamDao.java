@@ -6,6 +6,7 @@ import org.springproj.model.Driver;
 import org.springproj.model.Team;
 import org.springproj.repository.TeamDAO;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Repository("teamDao")
@@ -32,6 +33,14 @@ public class MemTeamDao implements TeamDAO {
         return null;
     }
 
+    @Override
+    public Team saveTeam(Team team) {
+        SampleData.sampleTeams.sort(Comparator.comparingInt(Team::getId));
+        int idToAdd = SampleData.sampleTeams.get(SampleData.sampleTeams.size() - 1).getId();
+        team.setId(idToAdd+1);
+        SampleData.sampleTeams.add(team);
+        return team;
+    }
 
 
 }

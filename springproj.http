@@ -40,3 +40,36 @@ Content-Type: application/json
   "age": 60,
   "country": "Germany"
 }
+
+### NULL w imieniu
+POST http://localhost:8080/webapi/drivers
+Content-Type: application/json
+Accept-Language: pl
+
+{
+"age": 60,
+"country": "Germany"
+}
+
+### za dlugie
+POST http://localhost:8080/webapi/drivers
+Content-Type: application/json
+
+{
+  "firstName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+  "lastName": "BBB",
+  "age": 60,
+  "country": "Germany"
+}
+
+
+###dodanie zespolu
+POST http://localhost:8080/webapi/teams
+Content-Type: application/json
+
+{
+
+  "cityLocation": "Katowice",
+  "country": "Poland"
+
+}

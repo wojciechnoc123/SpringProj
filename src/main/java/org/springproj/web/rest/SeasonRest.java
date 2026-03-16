@@ -4,11 +4,16 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springproj.model.DriverEntry;
 import org.springproj.model.TeamEntry;
 import org.springproj.service.DriverEntryService;
+import org.springproj.service.DriverService;
 import org.springproj.service.TeamEntryService;
 import org.springproj.model.Driver;
+import org.springproj.web.rest.dto.DriverEntryGetDTO;
+import org.springproj.web.rest.dto.DriverEntryPostDTO;
+import org.springproj.web.rest.dto.TeamEntryDTO;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,14 +23,42 @@ public class SeasonRest {
 
     private final DriverEntryService driverEntryService;
     private final TeamEntryService teamEntryService;
+    private final DriverService driverService;
 
-    @GetMapping("/driverEntries/{id}/teamEntry")
-    public ResponseEntity<TeamEntry> getTeamEntryWithDriverEntry(@PathVariable int id) {
+    @GetMapping("/driverEntries/{driverEntryId}/teamEntry")
+    public ResponseEntity<TeamEntryDTO> getTeamEntryWithDriverEntry(@PathVariable("driverEntryId") int id) {
+        log.info("Getting team entry from driver entry:" + id);
         DriverEntry driverEntry = driverEntryService.findById(id);
         if (driverEntry == null)
             return ResponseEntity.notFound().build();
-        else
-            return ResponseEntity.ok(teamEntryService.findByDriverEntry(driverEntry));
+        else {
+            TeamEntry teamEntry = teamEntryService.findByDriverEntry(driverEntry);
+            TeamEntryDTO teamEntryDTO = new TeamEntryDTO();
+            teamEntryDTO.setTeam(teamEntry.getTeam());
+            teamEntryDTO.setEngine(teamEntry.getEngine());
+            teamEntryDTO.setChassisName(teamEntryDTO.getChassisName());
+            return ResponseEntity.ok(teamEntryDTO);
+        }
+
+    }
+
+    @PostMapping("/driverEntries")
+    public ResponseEntity<?> saveDriverEntry(@RequestBody DriverEntryPostDTO driverEntryPostDTO) {
+
+        DriverEntry driverEntry = new DriverEntry();
+        driverEntry.setDriver(driverService.findById(driverEntryPostDTO.getDriverId()));
+        driverEntry.setTeam(teamEntryService.findById(driverEntryPostDTO.getTeamEntryId()));
+        driverEntry.setNumber(driverEntryPostDTO.getNumber());
+        DriverEntryGetDTO driverEntryGetDTO = new DriverEntryGetDTO();
+        driverEntryGetDTO.setDriver(driverEntry.getDriver());
+        driverEntryGetDTO.setTeamName(driverEntry.getTeam().getTeam().getName());
+        driverEntryGetDTO.setNumber(driverEntry.getNumber());
+        return ResponseEntity.created(ServletUriComponentsBuilder
+                .fromCurrentRequestUri().
+                path("/" + driverEntry.getId())
+                .build()
+                .toUri())
+                .body(driverEntryGetDTO);
     }
 
 

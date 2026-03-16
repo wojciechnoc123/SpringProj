@@ -13,4 +13,6 @@ public interface TeamService {
 
     List<Team> findByCountry(String country);
 
+    Team saveTeam(Team team);
+
 }

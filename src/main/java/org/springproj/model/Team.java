@@ -1,11 +1,10 @@
 package org.springproj.model;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import jakarta.validation.constraints.*;
 public class Team {
 
     private int id;
+    @NotNull
+    @Size(min = 2, max = 30)
     private String name;
     private String cityLocation;
     private String country;
@@ -18,6 +17,14 @@ public class Team {
         this.name = name;
         this.cityLocation = cityLocation;
         this.country = country;
+    }
+
+    public Team(String name, String cityLocation, String country) {
+        this(0,name, cityLocation, country);
+    }
+
+    public Team() {
+
     }
 
 
@@ -38,12 +45,12 @@ public class Team {
         this.name = name;
     }
 
-    public String getCity() {
+    public String getCityLocation() {
         return this.cityLocation;
     }
 
-    public void setCity(String city) {
-        this.cityLocation = city;
+    public void setCityLocation(String cityLocation) {
+        this.cityLocation = cityLocation;
     }
 
     public String getCountry() {

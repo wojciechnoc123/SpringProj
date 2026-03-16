@@ -25,7 +25,7 @@ public class SpringProjComponent implements CommandLineRunner, ApplicationListen
     @PostConstruct
     void init() {
     //    this.seasonService.printAllSeasons();
-        System.out.println("Zaczynam pracę.");
+        System.out.println("Starting work.");
     }
 
     @Override

@@ -1,10 +1,14 @@
 package org.springproj.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.validation.constraints.*;
+
 
 public class Driver {
 
     private int id;
+    @NotNull
+    @Size(min = 2, max = 20)
     private String firstName;
     private String lastName;
     private int age;

@@ -20,6 +20,8 @@ public class DriverEntry {
         this(id, driver, null, number);
     }
 
+    public DriverEntry() {}
+
     public int getId() {
         return this.id;
     }

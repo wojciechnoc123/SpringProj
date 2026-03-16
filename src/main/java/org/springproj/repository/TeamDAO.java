@@ -14,4 +14,6 @@ public interface TeamDAO {
 
     Team findById(int id);
 
+    Team saveTeam(Team team);
+
 }

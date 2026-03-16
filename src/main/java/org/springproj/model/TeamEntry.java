@@ -24,6 +24,8 @@ public class TeamEntry {
         this.raceDrivers[1] = driver2;
     }
 
+    public TeamEntry() {}
+
     public Team getTeam() {
         return this.team;
     }
