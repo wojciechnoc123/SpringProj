@@ -1,4 +1,4 @@
-package org.springproj.web.rest.dto;
+package org.springproj.web.dto;
 
 
 import lombok.Data;

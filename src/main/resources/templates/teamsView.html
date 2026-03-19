@@ -25,11 +25,11 @@
             <th>Country</th>
         </tr>
 
-        <tr th:each="d : ${drivers}">
-            <td th:text="${d.firstName}"></td>
-            <td th:text="${d.lastName}"></td>
-            <td th:text="${d.age}"></td>
-            <td th:text="${d.country}"></td>
+        <tr th:each="t : ${teams}">
+            <td th:text="${t.name}"></td>
+            <td th:text="${t.cityLocation}"></td>
+            <td th:text="${t.country}"></td>
+
         </tr>
     </table>
 

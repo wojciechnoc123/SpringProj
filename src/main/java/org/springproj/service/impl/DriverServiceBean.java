@@ -22,7 +22,7 @@ public class DriverServiceBean implements DriverService {
 
     @Override
     public List<Driver> findAllDrivers() {
-        return this.findAllDrivers();
+        return this.driverDao.findAll();
     }
 
     @Override

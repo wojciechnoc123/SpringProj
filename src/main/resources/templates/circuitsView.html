@@ -19,26 +19,22 @@
 
     <table>
         <tr>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Age</th>
+            <th>Name</th>
             <th>Country</th>
+            <th>Location</th>
         </tr>
 
-        <tr th:each="d : ${drivers}">
-            <td th:text="${d.firstName}"></td>
-            <td th:text="${d.lastName}"></td>
-            <td th:text="${d.age}"></td>
-            <td th:text="${d.country}"></td>
+        <tr th:each="c : ${circuits}">
+            <td th:text="${c.name}"></td>
+            <td th:text="${c.country}"></td>
+            <td th:text="${c.location}"></td>
         </tr>
     </table>
 
 </section>
-<div id="orders">
 
-</div>
 <footer>
-    ${tip}
+    <h5>Bottom text</h5>
 </footer>
 
 </body>

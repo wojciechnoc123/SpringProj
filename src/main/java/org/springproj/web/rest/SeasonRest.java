@@ -10,10 +10,9 @@ import org.springproj.model.TeamEntry;
 import org.springproj.service.DriverEntryService;
 import org.springproj.service.DriverService;
 import org.springproj.service.TeamEntryService;
-import org.springproj.model.Driver;
-import org.springproj.web.rest.dto.DriverEntryGetDTO;
-import org.springproj.web.rest.dto.DriverEntryPostDTO;
-import org.springproj.web.rest.dto.TeamEntryDTO;
+import org.springproj.web.dto.DriverEntryGetDTO;
+import org.springproj.web.dto.DriverEntryPostDTO;
+import org.springproj.web.dto.TeamEntryDTO;
 
 @RestController
 @RequiredArgsConstructor
