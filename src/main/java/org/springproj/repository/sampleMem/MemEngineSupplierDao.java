@@ -16,4 +16,16 @@ public class MemEngineSupplierDao implements EngineSupplierDao {
         return SampleData.sampleEngineSuppliers;
     }
 
+    @Override
+    public EngineSupplier findById(int id) {
+        return SampleData.sampleEngineSuppliers.stream().filter(x -> x.getId() == id).findFirst()
+                .orElse(null);
+    }
+
+    @Override
+    public EngineSupplier findByName(String name) {
+        return SampleData.sampleEngineSuppliers.stream().filter(x -> x.getName().equals(name))
+                .findFirst().orElse(null);
+    }
+
 }

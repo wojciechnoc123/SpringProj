@@ -23,6 +23,10 @@ public class SampleData {
 
     static List<EngineSupplier> sampleEngineSuppliers = new ArrayList<>();
 
+    static List<Circuit> sampleCircuits = new ArrayList<>();
+
+
+
     static void bind(TeamEntry team, DriverEntry driver1, DriverEntry driver2) {
         team.setRaceDrivers(driver1, driver2);
         driver1.setTeam(team);
@@ -118,6 +122,8 @@ public class SampleData {
 
         Circuit silverstone = new Circuit(1, "Silverstone Circuit", "United Kingdom", "Silverstone");
         Circuit spielberg = new Circuit(2, "Red Bull Ring", "Austria", "Spielberg");
+
+        sampleCircuits.add(silverstone); sampleCircuits.add(spielberg);
 
         GrandPrix gpBritain26 = new GrandPrix(1, "Austria GP", spielberg, "Austria", "13-07", season26);
         GrandPrix gpAustria26 = new GrandPrix(2, "British Grand Prix", silverstone, "United Kingdom", "06-07", season26);

@@ -23,7 +23,7 @@ public class DriverController {
     private final DriverService driverService;
 
     @GetMapping("/drivers")
-     String getAllDrivers(
+     String getDrivers(
              Model model,
              @RequestParam(value = "driverId", required = false) Integer driverId
     ) {

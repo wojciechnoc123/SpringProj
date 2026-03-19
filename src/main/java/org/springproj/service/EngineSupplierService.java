@@ -1,9 +1,8 @@
-package org.springproj.repository;
-
-import java.util.List;
+package org.springproj.service;
 import org.springproj.model.EngineSupplier;
+import java.util.List;
 
-public interface EngineSupplierDao {
+public interface EngineSupplierService {
 
     List<EngineSupplier> findAll();
 
