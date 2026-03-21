@@ -37,7 +37,7 @@ public class DriverController {
             drivers.add(driverService.findById(driverId));
             model.addAttribute("drivers", drivers);
         }
-        return "driversView";
+        return "general/driversView";
     }
     //
 

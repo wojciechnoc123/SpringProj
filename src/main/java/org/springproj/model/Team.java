@@ -23,9 +23,7 @@ public class Team {
         this(0,name, cityLocation, country);
     }
 
-    public Team() {
-
-    }
+    public Team() {}
 
 
     public int getId() {

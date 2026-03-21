@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Seasons</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" th:href="@{/css/styleGeneric.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1> Cokolwiek </h1>
+
+</header>
+<section>
+    <table>
+        <tr>
+            <th colspan="1">year</th>
+        </tr>
+        <tr th:each="s: ${seasons}">
+            <td> <a th:href="@{/ui/seasons/{year} (year=${s.year})}"> <span th:text="${s.year}"></span> </a></td>
+        </tr>
+    </table>
+</section>
+
+<footer>
+    <h5>Bottom text</h5>
+</footer>
+
+</body>
+</html>

@@ -33,6 +33,7 @@ public class GrandPrix {
         this(id, name, circuit, country, date, season, new ArrayList<>());
     }
 
+    public GrandPrix() {}
 
     public int getId() {
         return this.id;

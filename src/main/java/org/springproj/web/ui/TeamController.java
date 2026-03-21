@@ -39,7 +39,7 @@ public class TeamController {
             teams.add(teamService.findByName(teamName));
             model.addAttribute("teams", teams);
         }
-        return "teamsView";
+        return "general/teamsView";
     }
 
 }

@@ -16,6 +16,10 @@ public class SeasonServiceBean implements SeasonService {
 
     private SeasonDAO seasonDao;
 
+    public SeasonServiceBean(SeasonDAO seasonDao) {
+        this.seasonDao = seasonDao;
+    }
+
     @Override
     public List<Season> findAll() {
         return this.seasonDao.findAll();

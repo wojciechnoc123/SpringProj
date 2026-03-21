@@ -31,6 +31,8 @@ public class Season {
         this(it, year,new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
     }
 
+    public Season() {}
+
     public int getId() {
         return this.id;
     }

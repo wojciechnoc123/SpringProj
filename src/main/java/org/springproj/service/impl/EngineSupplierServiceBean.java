@@ -29,6 +29,7 @@ public class EngineSupplierServiceBean implements EngineSupplierService {
         return this.engineSupplierDao.findById(id);
     }
 
+    @Override
     public EngineSupplier findByName(String name) {
         return this.engineSupplierDao.findByName(name);
     }

@@ -21,9 +21,7 @@ public class Result {
         this.grandPrix = grandPrix;
     }
 
-    public Result() {
-
-    }
+    public Result() {}
 
     public int getId() {
         return this.id;

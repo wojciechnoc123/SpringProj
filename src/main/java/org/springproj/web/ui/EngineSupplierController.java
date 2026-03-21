@@ -38,7 +38,7 @@ public class EngineSupplierController {
             List<EngineSupplier> engineSuppliers = new ArrayList<>(1);
             engineSuppliers.add(engineSupplierService.findByName(name));
             model.addAttribute("engineSuppliers", engineSuppliers);
-            return "engineSupsView";
+            return "general/engineSupsView";
         }
 
     }

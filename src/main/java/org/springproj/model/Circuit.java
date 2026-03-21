@@ -14,6 +14,7 @@ public class Circuit {
         this.location = location;
     }
 
+    public Circuit() {}
 
     public int getId() {
         return this.id;

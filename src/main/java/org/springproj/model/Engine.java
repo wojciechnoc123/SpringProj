@@ -11,6 +11,8 @@ public class Engine {
         this.engineSupplier = engineSupplier;
     }
 
+    public Engine() {}
+
     public int getId() {
         return this.id;
     }

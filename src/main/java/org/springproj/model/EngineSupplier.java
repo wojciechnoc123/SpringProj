@@ -16,6 +16,8 @@ public class EngineSupplier {
         this.country = country;
     }
 
+    public EngineSupplier() {}
+
     public int getId() {
         return this.id;
     }
