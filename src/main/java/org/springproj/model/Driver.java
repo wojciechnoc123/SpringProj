@@ -2,6 +2,8 @@ package org.springproj.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.*;
+import org.springproj.model.converts.MyConverts;
+
 import java.time.LocalDate;
 
 
@@ -79,11 +81,7 @@ public class Driver {
     }
 
     public void setBirthDate(String birthDate) {
-        String regex = "[1-9][0-9][0-9][0-9]-([1-9]|1[0-2])-([1-9]|[1-2][0-9]|3[0-1])";
-        if (birthDate.matches(regex)) {
-            String[] toLocalDate = birthDate.split("-");
-            this.birthDate = LocalDate.of(Integer.parseInt(toLocalDate[0]), Integer.parseInt(toLocalDate[1]), Integer.parseInt(toLocalDate[2]));
-        }
+        this.birthDate = MyConverts.convertFromDate(birthDate);
     }
 
     public String getCountry() {

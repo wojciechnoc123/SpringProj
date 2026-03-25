@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Team Standings</title>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+
+  <link rel="stylesheet" th:href="@{/css/styleGeneric.css}"/>
+
+  <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet"/>
+</head>
+<body>
+<header>
+  <h1> Cokolwiek </h1>
+
+</header>
+<section>
+
+  <table>
+    <tr>
+      <td>Position</td>
+      <td>Team</td>
+      <td>Points</td>
+      <th:block th:each="race : ${races}">
+        <td th:text="${race.name}"> </td>
+      </th:block>
+    </tr>
+    <th:block th:each="team, position : ${teams}">
+      <tr>
+        <td rowspan="2" th:text="${position.count}"></td>
+        <td rowspan="2" th:text="${team.teamEntry.team.name}"></td>
+        <td rowspan="2" th:text="${team.points}"></td>
+        <th:block th:each="firstDriverPosition: ${team.getFirstDriverEntry().getPositions()}">
+          <td th:text="${firstDriverPosition}"></td>
+        </th:block>
+      </tr>
+      <tr>
+        <th:block th:each="secondDriverPositions : ${team.getSecondDriverEntry().getPositions()}">
+          <td th:text="${secondDriverPositions}"></td>
+        </th:block>
+      </tr>
+    </th:block>
+  </table>
+
+</section>
+
+<footer>
+  <a th:href="@{/ui/seasons/{year} (year = ${year})}">Return</a>
+</footer>
+
+</body>
+</html>

@@ -1,7 +1,5 @@
 package org.springproj.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,7 +74,7 @@ public class Season {
         return this.drivers;
     }
 
-    public void setDriverEntryList(List<DriverEntry> drivers) {
+    public void setDrivers(List<DriverEntry> drivers) {
         this.drivers = drivers;
     }
 
@@ -92,7 +90,7 @@ public class Season {
         return this.teams;
     }
 
-    public void setTeamEntryList(List<TeamEntry> teams) {
+    public void setTeams(List<TeamEntry> teams) {
         this.teams = teams;
     }
 

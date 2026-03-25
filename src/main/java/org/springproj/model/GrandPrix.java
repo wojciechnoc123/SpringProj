@@ -1,7 +1,9 @@
 package org.springproj.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springproj.model.converts.MyConverts;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -11,7 +13,7 @@ public class GrandPrix {
     private int id;
     private String name;
     private String country;
-    private String date; //DD-MM rok zaciagany z seonu
+    private LocalDate date; //DD-MM rok zaciagany z seonu
     private Circuit circuit;
 
     @JsonIgnore
@@ -19,7 +21,7 @@ public class GrandPrix {
 
     private List<Result> results;
 
-    public GrandPrix(int id, String name, Circuit circuit, String country, String date, Season season, List<Result> results) {
+    public GrandPrix(int id, String name, Circuit circuit, String country, LocalDate date, Season season, List<Result> results) {
         this.id = id;
         this.name = name;
         this.circuit = circuit;
@@ -29,8 +31,13 @@ public class GrandPrix {
         this.results = results;
     }
 
-    public GrandPrix(int id, String name, Circuit circuit, String country, String date, Season season) {
+    public GrandPrix(int id, String name, Circuit circuit, String country, LocalDate date, Season season) {
         this(id, name, circuit, country, date, season, new ArrayList<>());
+    }
+
+    public GrandPrix(int id, String name, Circuit circuit, String country, String date, Season season) {
+        this(id, name, circuit, country,
+                MyConverts.convertFromDate(date), season);
     }
 
     public GrandPrix() {}
@@ -66,13 +73,16 @@ public class GrandPrix {
         this.country = country;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return this.date;
     }
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
+    public void setDate(String date) {
+        this.date = MyConverts.convertFromDate(date);
+    }
     public Season getSeason() {
         return this.season;
     }

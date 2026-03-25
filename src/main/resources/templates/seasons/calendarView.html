@@ -24,19 +24,19 @@
             <th>Location</th>
         </tr>
 
-        <tr th:each="d : ${}">
-            <td th:text="${d.firstName}"></td>
-            <td th:text="${d.lastName}"></td>
-            <td th:text="${d.age}"></td>
-            <td th:text="${d.country}"></td>
+        <tr th:each="race : ${races}">
+            <td th:text="${race.name}"></td>
+            <td th:text="${race.country}"></td>
+            <td th:text="${race.date}"></td>
+            <td th:text="${race.circuit.name}"></td>
+            <td th:text="${race.circuit.location}"></td>
         </tr>
     </table>
 
 </section>
 
 <footer>
-
+    <a th:href="@{/ui/seasons/{year} (year = ${year})}">Return</a>
 </footer>
-
 </body>
 </html>

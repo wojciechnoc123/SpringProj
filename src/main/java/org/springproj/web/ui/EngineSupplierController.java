@@ -28,19 +28,16 @@ public class EngineSupplierController {
             Model model,
             @RequestParam(value = "name", required = false) String name
     ) {
+        List<EngineSupplier> engineSuppliers;
         if (name == null) {
-            List<EngineSupplier> engineSuppliers = engineSupplierService.findAll();
-            model.addAttribute("engineSuppliers", engineSuppliers);
-            return "engineSupsView";
+            engineSuppliers = engineSupplierService.findAll();
         }
-
         else {
-            List<EngineSupplier> engineSuppliers = new ArrayList<>(1);
+            engineSuppliers = new ArrayList<>(1);
             engineSuppliers.add(engineSupplierService.findByName(name));
-            model.addAttribute("engineSuppliers", engineSuppliers);
-            return "general/engineSupsView";
         }
-
+        model.addAttribute("engineSuppliers", engineSuppliers);
+        return "general/engineSupsView";
     }
 
 

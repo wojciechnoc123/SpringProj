@@ -17,24 +17,31 @@
 
   <table>
     <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Age</th>
-      <th>Country</th>
+      <th>Team</th>
+      <th> Country</th>
+      <th>Engine</th>
+      <th>Chassis</th>
+      <th>Drivers</th>
     </tr>
 
-    <tr th:each="d : ${drivers}">
-      <td th:text="${d.firstName}"></td>
-      <td th:text="${d.lastName}"></td>
-      <td th:text="${d.age}"></td>
-      <td th:text="${d.country}"></td>
-    </tr>
+    <th:block th:each="e : ${entries}">
+      <tr>
+        <td rowspan="2" th:text="${e.team.name}"></td>
+        <td rowspan="2" th:text="${e.team.country}"></td>
+        <td rowspan="2" th:text="${e.engine.name}"></td>
+        <td rowspan="2" th:text="${e.chassisName}"></td>
+        <td th:text="${e.firstDriver.number + ' ' + e.firstDriver.driver.firstName + ' ' + e.firstDriver.driver.lastName}"></td>
+      </tr>
+      <tr>
+        <td th:text="${e.secondDriver.number + ' ' + e.secondDriver.driver.firstName + ' ' + e.secondDriver.driver.lastName}"></td>
+      </tr>
+    </th:block>
   </table>
 
 </section>
 
 <footer>
-
+  <a th:href="@{/ui/seasons/{year} (year = ${year})}">Return</a>
 </footer>
 
 </body>

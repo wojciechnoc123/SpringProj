@@ -116,8 +116,8 @@ public class SampleData {
 
         Season season26 = new Season(1,"2026");
         season26.setGrandPrixList(sampleGrandPrixs);
-        season26.setDriverEntryList(sampleDriversEntries);
-        season26.setTeamEntryList(sampleTeamEntries);
+        season26.setDrivers(sampleDriversEntries);
+        season26.setTeams(sampleTeamEntries);
         sampleSeasons.add(season26);
 
         Circuit silverstone = new Circuit(1, "Silverstone Circuit", "United Kingdom", "Silverstone");
@@ -125,8 +125,8 @@ public class SampleData {
 
         sampleCircuits.add(silverstone); sampleCircuits.add(spielberg);
 
-        GrandPrix gpBritain26 = new GrandPrix(1, "Austria GP", spielberg, "Austria", "13-07", season26);
-        GrandPrix gpAustria26 = new GrandPrix(2, "British Grand Prix", silverstone, "United Kingdom", "06-07", season26);
+        GrandPrix gpBritain26 = new GrandPrix(1, "Austrian Grand Prix", spielberg, "Austria", "2026-07-06", season26);
+        GrandPrix gpAustria26 = new GrandPrix(2, "British Grand Prix", silverstone, "United Kingdom", "2026-07-13", season26);
 
         sampleGrandPrixs.add(gpBritain26); sampleGrandPrixs.add(gpAustria26);
 

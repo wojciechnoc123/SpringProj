@@ -14,13 +14,15 @@
 <section>
     <table>
             <tr><td><a th:href="@{/ui/seasons/{year}/calendar (year=${yearSeason})}">Calendar</a></td></tr>
-            <tr><td><a th:href="@{/ui/seasons/{year}/calendar (year=${yearSeason})}">Entry List</a></td></tr>
-            <tr><td><a th:href="@{/ui/seasons/{year}/calendar (year=${yearSeason})}">Standings</a></td></tr>
+            <tr><td><a th:href="@{/ui/seasons/{year}/entryList (year=${yearSeason})}">Entry List</a></td></tr>
+            <tr><td><a th:href="@{/ui/seasons/{year}/driverStandings (year=${yearSeason})}">Driver Standings</a></td></tr>
+            <tr><td><a th:href="@{/ui/seasons/{year}/teamStandings (year=${yearSeason})}">Team Standings</a></td></tr>
     </table>
+    <br>
 </section>
 
 <footer>
-    <h5>Bottom text</h5>
+    <a th:href="@{/ui/seasons}">Return</a>
 </footer>
 
 </body>
