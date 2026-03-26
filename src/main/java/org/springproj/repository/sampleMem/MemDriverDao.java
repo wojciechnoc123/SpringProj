@@ -19,7 +19,7 @@ public class MemDriverDao implements DriverDAO {
     @Override
     public Driver findByName(String fn, String ln) {
         for (var x : SampleData.sampleDrivers)  {
-            if (x.getFirstName().equals(fn) && x.getLastName().equals(ln))
+            if (x.getFirstname().equals(fn) && x.getLastname().equals(ln))
                 return x;
         }
         return null;

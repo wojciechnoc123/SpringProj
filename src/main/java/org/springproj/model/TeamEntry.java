@@ -2,6 +2,9 @@ package org.springproj.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TeamEntry {
 
     private int id;
@@ -9,7 +12,9 @@ public class TeamEntry {
     private Engine engine;
     private String chassisName;
 
-    private DriverEntry[] raceDrivers = new DriverEntry[2];
+    //private DriverEntry[] raceDrivers = new DriverEntry[2];
+
+    private List<DriverEntry> raceDrivers = new ArrayList<DriverEntry>(2);
 
     public TeamEntry(int i, Team team, Engine engine, String chassisName) {
         this.id = i;
@@ -20,8 +25,8 @@ public class TeamEntry {
 
     public TeamEntry(int i, Team team, Engine engine, String chassisName, DriverEntry driver1, DriverEntry driver2) {
         this(i, team, engine, chassisName);
-        this.raceDrivers[0] = driver1;
-        this.raceDrivers[1] = driver2;
+        this.raceDrivers.add(driver1);
+        this.raceDrivers.add(driver2);
     }
 
     public TeamEntry() {}
@@ -60,23 +65,23 @@ public class TeamEntry {
     }
 
     public void setFirstDriver(DriverEntry driver) {
-        this.raceDrivers[0] = driver;
+        this.raceDrivers.set(0, driver);
     }
 
     public void setSecondDriver(DriverEntry driver) {
-        this.raceDrivers[1] = driver;
+        this.raceDrivers.set(1, driver);
     }
 
     public DriverEntry getFirstDriver() {
-        return this.raceDrivers[0];
+        return this.raceDrivers.get(0);
     }
 
     public DriverEntry getSecondDriver() {
-        return this.raceDrivers[1];
+        return this.raceDrivers.get(1);
     }
 
     @JsonIgnore
-    public DriverEntry[] getRaceDrivers() {
+    public List<DriverEntry> getRaceDrivers() {
         return this.raceDrivers;
     }
 

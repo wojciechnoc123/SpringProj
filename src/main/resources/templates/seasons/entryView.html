@@ -30,10 +30,10 @@
         <td rowspan="2" th:text="${e.team.country}"></td>
         <td rowspan="2" th:text="${e.engine.name}"></td>
         <td rowspan="2" th:text="${e.chassisName}"></td>
-        <td th:text="${e.firstDriver.number + ' ' + e.firstDriver.driver.firstName + ' ' + e.firstDriver.driver.lastName}"></td>
+        <td th:text="${e.firstDriver.number + ' ' + e.firstDriver.driver.firstname + ' ' + e.firstDriver.driver.lastname}"></td>
       </tr>
       <tr>
-        <td th:text="${e.secondDriver.number + ' ' + e.secondDriver.driver.firstName + ' ' + e.secondDriver.driver.lastName}"></td>
+        <td th:text="${e.secondDriver.number + ' ' + e.secondDriver.driver.firstname + ' ' + e.secondDriver.driver.lastname}"></td>
       </tr>
     </th:block>
   </table>

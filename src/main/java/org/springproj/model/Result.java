@@ -76,8 +76,8 @@ public class Result {
     }
 
     public String showResult() {
-        String result = this.position + ". " + this.driver.getDriver().getFirstName() + " "
-                + this.driver.getDriver().getLastName() + " "
+        String result = this.position + ". " + this.driver.getDriver().getFirstname() + " "
+                + this.driver.getDriver().getLastname() + " "
                 + this.driver.getTeam().getTeam().getName()
                 + " " + this.time + " " + this.fastestLap;
         return result;

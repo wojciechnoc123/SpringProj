@@ -12,7 +12,7 @@ public class Driver {
     private int id;
     @NotNull
     @Size(min = 2, max = 20)
-    private String firstName;
+    private String firstname;
     private String lastName;
     private String country;
     //for now accepted format is YYYY-MM-DD from string as example
@@ -21,7 +21,7 @@ public class Driver {
 
     public Driver(int id, String firstName, String lastName, String country, LocalDate birthDate) {
         this.id = id;
-        this.firstName = firstName;
+        this.firstname = firstName;
         this.lastName = lastName;
         this.country = country;
         this.birthDate = birthDate;
@@ -47,19 +47,19 @@ public class Driver {
         }
     }
 
-    public String getFirstName() {
-        return this.firstName;
+    public String getFirstname() {
+        return this.firstname;
     }
 
-    public void setFirstName(String fn) {
-        this.firstName = fn;
+    public void setFirstname(String fn) {
+        this.firstname = fn;
     }
 
-    public String getLastName() {
+    public String getLastname() {
         return this.lastName;
     }
 
-    public void setLastName(String ln) {
+    public void setLastname(String ln) {
         this.lastName = ln;
     }
 

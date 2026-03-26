@@ -27,7 +27,7 @@
 
     <tr th:each="finalDriver, position: ${finalDrivers}">
       <td th:text="${position.count}"></td>
-      <td th:text="${finalDriver.getDriverEntry().getNumber() + ' ' + finalDriver.driverEntry.driver.firstName + ' ' + finalDriver.driverEntry.driver.lastName}"></td>
+      <td th:text="${finalDriver.getDriverEntry().getNumber() + ' ' + finalDriver.driverEntry.driver.firstname + ' ' + finalDriver.driverEntry.driver.lastname}"></td>
       <td th:text="${finalDriver.points}"></td>
       <th:block th:each="positionInRace: ${finalDriver.positions}">
         <td th:text="${positionInRace}"></td>
