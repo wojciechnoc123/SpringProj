@@ -62,5 +62,18 @@ public class TeamEntryPointsDTO {
         this.points = this.firstDriverEntry.getPoints() + this.secondDriverEntry.getPoints();
     }
 
+    public DriverEntryPointsDTO getDriverWithMorePoints() {
+        if (this.firstDriverEntry.getPoints() > this.secondDriverEntry.getPoints())
+            return this.firstDriverEntry;
+        else
+            return this.secondDriverEntry;
+    }
+
+    public DriverEntryPointsDTO getDriverWithLessPoints() {
+        if (this.firstDriverEntry.getPoints() < this.secondDriverEntry.getPoints())
+            return this.firstDriverEntry;
+        else
+            return this.secondDriverEntry;
+    }
 
 }

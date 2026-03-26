@@ -20,6 +20,7 @@
       <td>Position</td>
       <td>Team</td>
       <td>Points</td>
+      <td>Driver</td>
       <th:block th:each="race : ${races}">
         <td th:text="${race.name}"> </td>
       </th:block>
@@ -29,12 +30,14 @@
         <td rowspan="2" th:text="${position.count}"></td>
         <td rowspan="2" th:text="${team.teamEntry.team.name}"></td>
         <td rowspan="2" th:text="${team.points}"></td>
-        <th:block th:each="firstDriverPosition: ${team.getFirstDriverEntry().getPositions()}">
+        <td th:text="${team.getDriverWithMorePoints().getDriverEntry().getNumber()}"></td>
+        <th:block th:each="firstDriverPosition: ${team.getDriverWithMorePoints().getPositions()}">
           <td th:text="${firstDriverPosition}"></td>
         </th:block>
       </tr>
       <tr>
-        <th:block th:each="secondDriverPositions : ${team.getSecondDriverEntry().getPositions()}">
+        <td th:text="${team.getDriverWithLessPoints().getDriverEntry().getNumber()}"></td>
+        <th:block th:each="secondDriverPositions : ${team.getDriverWithLessPoints().getPositions()}">
           <td th:text="${secondDriverPositions}"></td>
         </th:block>
       </tr>
