@@ -8,16 +8,22 @@ public class DriverEntry {
     private Driver driver;
     private TeamEntry team;
     private int number;
+    private Season season;
 
-    public DriverEntry(int id, Driver driver, TeamEntry teamEntry, int number) {
+    public DriverEntry(int id, Driver driver, TeamEntry teamEntry, int number, Season season) {
         this.id = id;
         this.driver = driver;
         this.team = teamEntry;
         this.number = number;
+        this.season = season;
+    }
+
+    public DriverEntry(int id, Driver driver, TeamEntry teamEntry, int number) {
+        this(id, driver, teamEntry, number, teamEntry.getSeason());
     }
 
     public DriverEntry(int id, Driver driver, int number) {
-        this(id, driver, null, number);
+        this(id, driver, null, number, null);
     }
 
     public DriverEntry() {}
@@ -54,5 +60,13 @@ public class DriverEntry {
     }
     public int getNumber() {
         return this.number;
+    }
+
+    public Season getSeason() {
+        return this.season;
+    }
+
+    public void setSeason(Season season) {
+        this.season = season;
     }
 }

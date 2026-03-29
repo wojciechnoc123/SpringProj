@@ -11,20 +11,31 @@ public class TeamEntry {
     private Team team;
     private Engine engine;
     private String chassisName;
-
+    private Season season;
     //private DriverEntry[] raceDrivers = new DriverEntry[2];
 
-    private List<DriverEntry> raceDrivers = new ArrayList<DriverEntry>(2);
+    private List<DriverEntry> raceDrivers = new ArrayList<>(2);
 
-    public TeamEntry(int i, Team team, Engine engine, String chassisName) {
+    public TeamEntry(int i, Team team, Engine engine, String chassisName, Season season) {
         this.id = i;
         this.team = team;
         this.engine = engine;
         this.chassisName = chassisName;
+        this.season = season;
+    }
+
+    public TeamEntry(int i, Team team, Engine engine, String chassisName, Season season, DriverEntry driver1, DriverEntry driver2) {
+        this(i, team, engine, chassisName, season);
+        this.raceDrivers.add(driver1);
+        this.raceDrivers.add(driver2);
+    }
+
+    public TeamEntry(int i, Team team, Engine engine, String chassisName) {
+        this(i, team, engine, chassisName, null);
     }
 
     public TeamEntry(int i, Team team, Engine engine, String chassisName, DriverEntry driver1, DriverEntry driver2) {
-        this(i, team, engine, chassisName);
+        this(i, team, engine, chassisName, null);
         this.raceDrivers.add(driver1);
         this.raceDrivers.add(driver2);
     }
@@ -65,19 +76,31 @@ public class TeamEntry {
     }
 
     public void setFirstDriver(DriverEntry driver) {
-        this.raceDrivers.set(0, driver);
+        if (!(this.raceDrivers.isEmpty()))
+            this.raceDrivers.set(0, driver);
+        else
+            this.raceDrivers.add(driver);
     }
 
     public void setSecondDriver(DriverEntry driver) {
-        this.raceDrivers.set(1, driver);
+        if (this.raceDrivers.size() < 2)
+            this.raceDrivers.add(driver);
+        else    //maybe change to better requirement
+            this.raceDrivers.set(1, driver);
     }
 
     public DriverEntry getFirstDriver() {
-        return this.raceDrivers.get(0);
+        if (!(this.raceDrivers.isEmpty()))
+            return this.raceDrivers.get(0);
+        else
+            return null;
     }
 
     public DriverEntry getSecondDriver() {
-        return this.raceDrivers.get(1);
+        if (!(this.raceDrivers.size() < 2))
+            return this.raceDrivers.get(1);
+        else
+            return null;
     }
 
     @JsonIgnore
@@ -88,6 +111,14 @@ public class TeamEntry {
     public void setRaceDrivers(DriverEntry driver1, DriverEntry driver2) {
         setFirstDriver(driver1);
         setSecondDriver(driver2);
+    }
+
+    public Season getSeason() {
+        return this.season;
+    }
+
+    public void setSeason(Season season) {
+        this.season = season;
     }
 
 }

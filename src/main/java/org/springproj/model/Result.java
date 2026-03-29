@@ -7,16 +7,16 @@ public class Result {
     private int id;
     private int position;
     private DriverEntry driver;
-    private double time;    //in seconds
+    private double raceTime;    //in seconds
     private double fastestLap;
 
     @JsonIgnore
     private GrandPrix grandPrix;
 
-    public Result(int position, DriverEntry driver, double time, double fastestLap, GrandPrix grandPrix) {
+    public Result(int position, DriverEntry driver, double raceTime, double fastestLap, GrandPrix grandPrix) {
         this.position = position;
         this.driver = driver;
-        this.time = time;
+        this.raceTime = raceTime;
         this.fastestLap = fastestLap;
         this.grandPrix = grandPrix;
     }
@@ -49,13 +49,13 @@ public class Result {
         this.driver = driver;
     }
 
-    public double getTime() {
-        return this.time;
+    public double getRaceTime() {
+        return this.raceTime;
     }
 
-    public void setTime(double time) {
-        if (time > 0.0)
-            this.time = time;
+    public void setRaceTime(double raceTime) {
+        if (raceTime > 0.0)
+            this.raceTime = raceTime;
     }
 
     public void setFastestLap(double fl) {
@@ -79,7 +79,7 @@ public class Result {
         String result = this.position + ". " + this.driver.getDriver().getFirstname() + " "
                 + this.driver.getDriver().getLastname() + " "
                 + this.driver.getTeam().getTeam().getName()
-                + " " + this.time + " " + this.fastestLap;
+                + " " + this.raceTime + " " + this.fastestLap;
         return result;
     }
 

@@ -13,7 +13,7 @@ public class GrandPrix {
     private int id;
     private String name;
     private String country;
-    private LocalDate date; //DD-MM rok zaciagany z seonu
+    private LocalDate gpDate; //DD-MM rok zaciagany z seonu
     private Circuit circuit;
 
     @JsonIgnore
@@ -26,7 +26,7 @@ public class GrandPrix {
         this.name = name;
         this.circuit = circuit;
         this.country = country;
-        this.date = date;
+        this.gpDate = date;
         this.season = season;
         this.results = results;
     }
@@ -74,14 +74,14 @@ public class GrandPrix {
     }
 
     public LocalDate getDate() {
-        return this.date;
+        return this.gpDate;
     }
     public void setDate(LocalDate date) {
-        this.date = date;
+        this.gpDate = date;
     }
 
     public void setDate(String date) {
-        this.date = MyConverts.convertFromDate(date);
+        this.gpDate = MyConverts.convertFromDate(date);
     }
     public Season getSeason() {
         return this.season;
