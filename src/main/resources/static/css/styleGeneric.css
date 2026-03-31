@@ -6,12 +6,13 @@ body {
 }
 
 header {
-    background-color: #ffa91f;
+    background-color: #00bb55;
     top: 0;
     width: 100%;
     position: fixed;
     box-shadow: 0 3px 65px 0 #7b1b18;
 }
+
 section {
     margin-top: 200px;
 }
@@ -38,6 +39,14 @@ td {
     border-style: solid;
     border-width: 1pt;
     border-color: #000000;
+}
+
+footer {
+    border-top: 2px solid black;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
 }
 /*
 FOOTER DO ZROBIENIA
