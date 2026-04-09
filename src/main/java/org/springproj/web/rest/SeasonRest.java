@@ -3,6 +3,7 @@ package org.springproj.web.rest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springproj.model.DriverEntry;
@@ -35,26 +36,31 @@ public class SeasonRest {
             TeamEntryDTO teamEntryDTO = new TeamEntryDTO();
             teamEntryDTO.setTeam(teamEntry.getTeam());
             teamEntryDTO.setEngine(teamEntry.getEngine());
-            teamEntryDTO.setChassisName(teamEntryDTO.getChassisName());
+            teamEntryDTO.setChassisName(teamEntry.getChassisName());
             return ResponseEntity.ok(teamEntryDTO);
         }
 
     }
 
     @PostMapping("/driverEntries")
-    public ResponseEntity<?> saveDriverEntry(@RequestBody DriverEntryPostDTO driverEntryPostDTO) {
+    public ResponseEntity<?> saveDriverEntry(@RequestBody DriverEntryPostDTO driverEntryPostDTO, Authentication authentication) {
 
         DriverEntry driverEntry = new DriverEntry();
         driverEntry.setDriver(driverService.findById(driverEntryPostDTO.getDriverId()));
         driverEntry.setTeam(teamEntryService.findById(driverEntryPostDTO.getTeamEntryId()));
         driverEntry.setNumber(driverEntryPostDTO.getNumber());
+        if (driverEntry.getDriver() == null || driverEntry.getTeam() == null) {
+            return ResponseEntity.notFound().build();
+        }
+        log.info("authenticated user {}", authentication.getName());
+        DriverEntry savedDriverEntry = driverEntryService.saveDriverEntry(driverEntry);
         DriverEntryGetDTO driverEntryGetDTO = new DriverEntryGetDTO();
-        driverEntryGetDTO.setDriver(driverEntry.getDriver());
-        driverEntryGetDTO.setTeamName(driverEntry.getTeam().getTeam().getName());
-        driverEntryGetDTO.setNumber(driverEntry.getNumber());
+        driverEntryGetDTO.setDriver(savedDriverEntry.getDriver());
+        driverEntryGetDTO.setTeamName(savedDriverEntry.getTeam().getTeam().getName());
+        driverEntryGetDTO.setNumber(savedDriverEntry.getNumber());
         return ResponseEntity.created(ServletUriComponentsBuilder
                 .fromCurrentRequestUri().
-                path("/" + driverEntry.getId())
+                path("/" + savedDriverEntry.getId())
                 .build()
                 .toUri())
                 .body(driverEntryGetDTO);

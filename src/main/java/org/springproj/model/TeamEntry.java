@@ -1,19 +1,41 @@
 package org.springproj.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "team_entry")
 public class TeamEntry {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @ManyToOne
+    @JoinColumn(name = "team_id")
     private Team team;
+    @ManyToOne
+    @JoinColumn(name = "engine_id")
     private Engine engine;
+    @Column(name = "chassis_name")
     private String chassisName;
+    @ManyToOne
+    @JoinColumn(name = "season_id")
     private Season season;
     //private DriverEntry[] raceDrivers = new DriverEntry[2];
 
+    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
     private List<DriverEntry> raceDrivers = new ArrayList<>(2);
 
     public TeamEntry(int i, Team team, Engine engine, String chassisName, Season season) {
@@ -113,6 +135,7 @@ public class TeamEntry {
         setSecondDriver(driver2);
     }
 
+    @JsonIgnore
     public Season getSeason() {
         return this.season;
     }

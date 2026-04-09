@@ -23,4 +23,13 @@ public class MemDriverEntryDAO implements DriverEntryDAO {
         return SampleData.sampleDriversEntries.stream().filter(x -> x.equals(driver)).toList();
     }
 
+    @Override
+    public DriverEntry saveDriverEntry(DriverEntry driverEntry) {
+        SampleData.sampleDriversEntries.sort((left, right) -> Integer.compare(left.getId(), right.getId()));
+        int idToAdd = SampleData.sampleDriversEntries.get(SampleData.sampleDriversEntries.size() - 1).getId();
+        driverEntry.setId(idToAdd + 1);
+        SampleData.sampleDriversEntries.add(driverEntry);
+        return driverEntry;
+    }
+
 }

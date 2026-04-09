@@ -1,5 +1,5 @@
 ### getting team
-GET http://localhost:8080/webapi/team?name=costam
+GET http://localhost:8080/webapi/teams
 Content-Type: application/json
 
 ### adding team

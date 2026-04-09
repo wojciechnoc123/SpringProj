@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -45,7 +46,7 @@ public class DriverlRest {
     }
 
     @PostMapping("/drivers")
-    public ResponseEntity<?> createDriver(@Validated  @RequestBody Driver driver, Errors errors, HttpServletRequest request) {
+    public ResponseEntity<?> createDriver(@Validated  @RequestBody Driver driver, Errors errors, HttpServletRequest request, Authentication authentication) {
         //machen walidacja
         log.info("creating driver");
 
@@ -56,6 +57,7 @@ public class DriverlRest {
                     .reduce("errors:\n", (accu, objectError)-> accu + objectError + "\n");
             return ResponseEntity.badRequest().body(errorMessage);
         }
+        log.info("authenticated user {}", authentication.getName());
        return ResponseEntity.status(HttpStatus.CREATED).body(driverService.saveDriver(driver));
     }
 

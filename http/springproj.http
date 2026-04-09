@@ -14,7 +14,7 @@ GET http://localhost:8080/webapi/test/teamEntries
 GET http://localhost:8080/webapi/test/teams
 
 ### pojedynczy zespol
-GET http://localhost:8080/webapi/test/teams/6
+GET http://localhost:8080/webapi/test/teams/4
 
 ### pojedynczy kierowca
 GET http://localhost:8080/webapi/test/drivers/2
@@ -35,10 +35,31 @@ POST http://localhost:8080/webapi/drivers
 Content-Type: application/json
 
 {
-  "firstName": "Michael",
-  "lastName": "Schumacher",
-  "age": 60,
+  "firstname": "Michael",
+  "lastname": "Schumacher",
   "country": "Germany"
+}
+
+### dodanie kierowcy z data urodzenia
+POST http://localhost:8080/webapi/drivers
+Content-Type: application/json
+
+{
+  "firstname": "Jan",
+  "lastname": "Kowalski",
+  "country": "Poland",
+  "birthDate": "2000-01-01"
+}
+
+### rollback przy dodawaniu kierowcy
+POST http://localhost:8080/webapi/drivers
+Content-Type: application/json
+
+{
+  "firstname": "Rollback",
+  "lastname": "Kowalski",
+  "country": "Poland",
+  "birthDate": "2000-01-01"
 }
 
 ### NULL w imieniu
@@ -47,7 +68,6 @@ Content-Type: application/json
 Accept-Language: pl
 
 {
-"age": 60,
 "country": "Germany"
 }
 
@@ -56,9 +76,8 @@ POST http://localhost:8080/webapi/drivers
 Content-Type: application/json
 
 {
-  "firstName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-  "lastName": "BBB",
-  "age": 60,
+  "firstname": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+  "lastname": "BBB",
   "country": "Germany"
 }
 
@@ -73,4 +92,80 @@ Content-Type: application/json
   "driverId": 3,
   "teamEntryId": 2,
   "number": 21
+}
+
+### actuator root
+GET http://localhost:8080/actuator
+
+### actuator health
+GET http://localhost:8080/actuator/health
+
+### actuator env
+GET http://localhost:8080/actuator/env
+
+### actuator beans
+GET http://localhost:8080/actuator/beans
+
+### actuator info
+GET http://localhost:8080/actuator/info
+
+### actuator shutdown
+POST http://localhost:8080/actuator/shutdown
+
+### security: get teams without login
+GET http://localhost:8080/webapi/test/teams
+
+### security: create team without login -> 401
+POST http://localhost:8080/webapi/teams
+Content-Type: application/json
+
+{
+  "name": "Security Test Team",
+  "cityLocation": "Warsaw",
+  "country": "Poland"
+}
+
+### security: create team with invalid user -> 401
+POST http://localhost:8080/webapi/teams
+Content-Type: application/json
+Authorization: Basic d3Jvbmc6d3Jvbmc=
+
+{
+  "name": "Security Test Team",
+  "cityLocation": "Warsaw",
+  "country": "Poland"
+}
+
+### security: create team as user without admin role -> 403
+POST http://localhost:8080/webapi/teams
+Content-Type: application/json
+Authorization: Basic ZGJ1c2VyMjpkYnVzZXIy
+
+{
+  "name": "Security Test Team",
+  "cityLocation": "Warsaw",
+  "country": "Poland"
+}
+
+### security: create team as admin -> 201
+POST http://localhost:8080/webapi/teams
+Content-Type: application/json
+Authorization: Basic ZGJ1c2VyMTpkYnVzZXIx
+
+{
+  "name": "Security Test Team",
+  "cityLocation": "Warsaw",
+  "country": "Poland"
+}
+
+### security: create driver as admin -> 201
+POST http://localhost:8080/webapi/drivers
+Content-Type: application/json
+Authorization: Basic ZGJ1c2VyMTpkYnVzZXIx
+
+{
+  "firstname": "Security",
+  "lastname": "Driver",
+  "country": "Poland",
+  "birthDate": "2001-01-01"
 }

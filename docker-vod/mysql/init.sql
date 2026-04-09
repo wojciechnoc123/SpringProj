@@ -102,6 +102,20 @@ CREATE TABLE result
     CONSTRAINT uq_result_gp_driver UNIQUE (grand_prix_id, driver_entry_id)
 );
 
+CREATE TABLE `user`
+(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    username varchar(255) NOT NULL UNIQUE,
+    password varchar(255) NOT NULL
+);
+
+CREATE TABLE `role`
+(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    username varchar(255) NOT NULL,
+    role varchar(255) NOT NULL
+);
+
 /*
   ADDING GENERAL DATA
  */
@@ -129,8 +143,7 @@ VALUES
     (2, 'Mercedes', 'Brackley', 'Germany'),
     (3, 'Scuderia Ferrari', 'Maranello', 'Italy'),
     (4, 'Red Bull', 'Milton Keynes', 'United Kingdom'),
-    (5, 'Audi', 'Hinvil', 'Switzerland')
-    );
+    (5, 'Audi', 'Hinvil', 'Switzerland');
 
 INSERT INTO engine_supplier
 VALUES
@@ -203,3 +216,16 @@ VALUES
     (18, 8, 8, 5020.0, 78.0, 1),
     (19, 9, 9, 5030.0, 79.0, 1),
     (20, 10, 10, 5040.0, 80.0, 1);
+
+INSERT INTO `user`
+VALUES
+    (1, 'dbuser1', 'dbuser1'),
+    (2, 'dbuser2', 'dbuser2'),
+    (3, 'dbuser3', 'dbuser3');
+
+INSERT INTO `role`
+VALUES
+    (1, 'dbuser1', 'ROLE_ADMIN'),
+    (2, 'dbuser2', 'ROLE_USER'),
+    (3, 'dbuser3', 'ROLE_USER'),
+    (4, 'dbuser3', 'ROLE_ADMIN');

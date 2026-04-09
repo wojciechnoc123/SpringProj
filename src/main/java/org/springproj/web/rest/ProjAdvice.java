@@ -17,16 +17,24 @@ public class ProjAdvice {
 
     private final TeamValidator teamValidator;
 
-
+    /*
     @InitBinder
     void initBinder(WebDataBinder binder) {
         binder.addValidators(teamValidator);
     }
 
+     */
+
     @ExceptionHandler(IllegalArgumentException.class)
     ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
         log.info("IllegalArgument exception " + ex.getMessage());
         return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    ResponseEntity<String> handleRuntimeException(RuntimeException ex) {
+        log.error("Runtime exception", ex);
+        return ResponseEntity.status(HttpStatus.LOOP_DETECTED).body(ex.getMessage());
     }
 
 }

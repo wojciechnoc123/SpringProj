@@ -13,6 +13,6 @@ public interface DriverEntryService {
 
     List<DriverEntry> findAll();
 
-
+    DriverEntry saveDriverEntry(DriverEntry driverEntry);
 
 }

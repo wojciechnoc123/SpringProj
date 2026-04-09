@@ -1,11 +1,23 @@
 package org.springproj.model;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.*;
+
+@Entity
+@Table(name = "team")
 public class Team {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotNull
     @Size(min = 2, max = 30)
     private String name;
+    @Column(name = "city_location")
     private String cityLocation;
     private String country;
 

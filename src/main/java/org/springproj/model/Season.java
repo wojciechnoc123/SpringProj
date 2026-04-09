@@ -1,21 +1,36 @@
 package org.springproj.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
+@Entity
+@Table(name = "season")
 public class Season {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String year;
 
 
+    @Transient
+    private List<DriverEntry> drivers = new ArrayList<>();
 
-    private List<DriverEntry> drivers;
+    @OneToMany(mappedBy = "season", fetch = FetchType.EAGER)
+    private List<TeamEntry> teams = new ArrayList<>();
 
-    private List<TeamEntry> teams;
-
-    private List<GrandPrix> grandPrixes;
+    @OneToMany(mappedBy = "season", fetch = FetchType.EAGER)
+    private List<GrandPrix> grandPrixes = new ArrayList<>();
 
     public Season(int id, String year, List<GrandPrix> grandPrixes, List<DriverEntry> drivers, List<TeamEntry> teams) {
         this.id = id;
@@ -71,6 +86,15 @@ public class Season {
     }
 
     public List<DriverEntry> getDrivers() {
+        if ((this.drivers == null || this.drivers.isEmpty()) && this.teams != null) {
+            List<DriverEntry> derivedDrivers = new ArrayList<>();
+            for (var teamEntry : this.teams) {
+                if (teamEntry.getRaceDrivers() != null) {
+                    derivedDrivers.addAll(teamEntry.getRaceDrivers());
+                }
+            }
+            this.drivers = derivedDrivers;
+        }
         return this.drivers;
     }
 

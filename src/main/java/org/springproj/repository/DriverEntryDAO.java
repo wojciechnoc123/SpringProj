@@ -13,4 +13,6 @@ public interface DriverEntryDAO {
 
     List<DriverEntry> findByDriver(Driver driver);
 
+    DriverEntry saveDriverEntry(DriverEntry driverEntry);
+
 }

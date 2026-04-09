@@ -2,6 +2,8 @@ package org.springproj.service.impl;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.transaction.annotation.Transactional;
 import org.springproj.repository.TeamDAO;
 import org.springproj.service.TeamService;
 import org.springproj.model.Team;
@@ -39,8 +41,14 @@ public class TeamServiceBean implements TeamService {
     }
 
     @Override
+    @PreAuthorize("hasRole('ADMIN')")
+    @Transactional
     public Team saveTeam(Team team) {
-        return this.teamDAO.saveTeam(team);
+        Team savedTeam = this.teamDAO.saveTeam(team);
+        if (savedTeam.getName() != null && savedTeam.getName().toLowerCase().contains("rollback")) {
+            throw new RuntimeException("transaction rollback test for team save");
+        }
+        return savedTeam;
     }
 
 }

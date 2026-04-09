@@ -1,22 +1,34 @@
 package org.springproj.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.*;
 import org.springproj.model.converts.MyConverts;
 
 import java.time.LocalDate;
 
 
+@Entity
+@Table(name = "driver")
 public class Driver {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotNull
     @Size(min = 2, max = 20)
     private String firstname;
+    @Column(name = "lastname")
     private String lastName;
     private String country;
     //for now accepted format is YYYY-MM-DD from string as example
     //1999-10-3
+    @Column(name = "birth_date")
     private LocalDate birthDate;
 
     public Driver(int id, String firstName, String lastName, String country, LocalDate birthDate) {

@@ -2,6 +2,8 @@ package org.springproj.service.impl;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.transaction.annotation.Transactional;
 import org.springproj.model.Driver;
 import org.springproj.repository.DriverDAO;
 import org.springproj.service.DriverService;
@@ -41,8 +43,17 @@ public class DriverServiceBean implements DriverService {
     }
 
     @Override
+    @PreAuthorize("hasRole('ADMIN')")
+    @Transactional
     public Driver saveDriver(Driver driver) {
-        return this.driverDao.saveDriver(driver);
+        Driver savedDriver = this.driverDao.saveDriver(driver);
+        boolean rollbackRequested =
+                (savedDriver.getFirstname() != null && savedDriver.getFirstname().toLowerCase().contains("rollback"))
+                || (savedDriver.getLastname() != null && savedDriver.getLastname().toLowerCase().contains("rollback"));
+        if (rollbackRequested) {
+            throw new RuntimeException("transaction rollback test for driver save");
+        }
+        return savedDriver;
     }
 
 }

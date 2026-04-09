@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
@@ -46,7 +47,7 @@ public class TeamRest {
     }
 
     @PostMapping("/teams")
-    public ResponseEntity<?> saveTeam(@Validated @RequestBody Team team, Errors errors, HttpServletRequest request) {
+    public ResponseEntity<?> saveTeam(@Validated @RequestBody Team team, Errors errors, HttpServletRequest request, Authentication authentication) {
         log.info("creating a team");
 
         if (errors.hasErrors()) {
@@ -56,6 +57,7 @@ public class TeamRest {
                     .reduce("errors:\n", (accu, objectError)-> accu + objectError + "\n");
             return ResponseEntity.badRequest().body(errorMessage);
         }
+        log.info("authenticated user {}", authentication.getName());
         return ResponseEntity.status(HttpStatus.CREATED).body(teamService.saveTeam(team));
     }
 

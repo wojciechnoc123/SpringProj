@@ -1,6 +1,16 @@
 package org.springproj.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import org.springproj.model.converts.MyConverts;
 
 import java.time.LocalDate;
@@ -8,18 +18,28 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+@Entity
+@Table(name = "grand_prix")
 public class GrandPrix {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String country;
+    @Column(name = "gp_date")
     private LocalDate gpDate; //DD-MM rok zaciagany z seonu
+    @ManyToOne
+    @JoinColumn(name = "circuit_id")
     private Circuit circuit;
 
     @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "season_id")
     private Season season;
 
-    private List<Result> results;
+    @OneToMany(mappedBy = "grandPrix", fetch = FetchType.EAGER)
+    private List<Result> results = new ArrayList<>();
 
     public GrandPrix(int id, String name, Circuit circuit, String country, LocalDate date, Season season, List<Result> results) {
         this.id = id;

@@ -1,16 +1,34 @@
 package org.springproj.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "result")
 public class Result {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int position;
+    @ManyToOne
+    @JoinColumn(name = "driver_entry_id")
     private DriverEntry driver;
+    @Column(name = "race_time")
     private double raceTime;    //in seconds
+    @Column(name = "fastest_lap")
     private double fastestLap;
 
     @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "grand_prix_id")
     private GrandPrix grandPrix;
 
     public Result(int position, DriverEntry driver, double raceTime, double fastestLap, GrandPrix grandPrix) {

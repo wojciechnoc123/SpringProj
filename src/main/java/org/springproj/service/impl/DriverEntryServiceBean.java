@@ -2,6 +2,8 @@ package org.springproj.service.impl;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.transaction.annotation.Transactional;
 import org.springproj.model.Driver;
 import org.springproj.model.DriverEntry;
 import org.springproj.repository.DriverEntryDAO;
@@ -36,7 +38,11 @@ public class DriverEntryServiceBean implements DriverEntryService {
         return this.driverEntryDao.findAll();
     }
 
-
-
+    @Override
+    @PreAuthorize("hasRole('ADMIN')")
+    @Transactional
+    public DriverEntry saveDriverEntry(DriverEntry driverEntry) {
+        return this.driverEntryDao.saveDriverEntry(driverEntry);
+    }
 
 }
